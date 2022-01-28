@@ -12,34 +12,28 @@ add_action('wp_before_admin_bar_render', function() {
         return;
     }
     
-    // Don't show on order page
-    if ( $screen->base == "edit" ) {
-        return;
-    } else {
-    
-        global $wp_admin_bar;
 
-        $search_query = '';
-        if (!empty($_GET['post_type']) && $_GET['post_type'] == 'shop_order' ) {
-            $search_query = !empty($_GET['s']) ? $_GET['s'] : '';
-                if($search_query) {
-                    $order = get_post(intval($search_query));
-                        if($order) {
-                            wp_redirect(get_edit_post_link($order->ID, ''));
-                            exit;
-                        }
-                }
+    
+    global $wp_admin_bar;
+
+    $search_query = '';
+    $search_query = !empty($_POST['order_search']) ? $_POST['order_search'] : '';
+    $search_query = intval($search_query);
+    
+        if($search_query) {
+            wp_redirect('edit.php?post_type=shop_order&s=' . $search_query);
         }
 
 
-        $wp_admin_bar->add_menu(array(
-        'id' => 'admin_bar_shop_order_form',
-        'title' => '<form method="get" action="'.get_site_url().'/wp-admin/edit.php?post_type=shop_order">
-        <input name="s" type="text" placeholder="Order or Sub ID" value="' . $search_query . '" style="width:100px;height: 10px;padding-left: 5px;">
-        <button class="button button-primary" style="padding: 0px 10px 0px 10px!important; height: 5px!important;">Check</button>
-        <input name="post_type" value="shop_order" type="hidden">
-        </form>'
-        ));
-    }
+
+    $wp_admin_bar->add_menu(array(
+    'id' => 'admin_bar_shop_order_form',
+    'title' => '<form method="post" action="">
+    <input name="order_search" type="text" placeholder="Order or Sub ID" style="width:100px;height: 10px;padding-left: 5px;">
+    <button class="button button-primary" style="padding: 0px 10px 0px 10px!important; height: 5px!important;">Check</button>
+    <input name="post_type" value="shop_order" type="hidden">
+    </form>'
+    ));
+    
 },100
 );
