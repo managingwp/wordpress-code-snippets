@@ -9,12 +9,6 @@
 add_action( 'admin_init', 'my_ajax_checker', 10, 2);
 
 function my_ajax_checker() {
-    // Change to 1 to match all requests, versus just admin-ajax.php this can include woocommerce cart fragements.
-    $match_all = "0";
-    // If $match_all = 1 then $match_uri is ignored.
-    $match_uri = "/wp-admin/admin-ajax.php";
-
-    if ( strpos($_SERVER['REQUEST_URI'], $match_uri) !== false || $match_all == "1" ) {
         $message .= "*** Running on " . $_SERVER['REQUEST_URI'] . " based on " . $match_uri . "\n";
 
         // Enable and Disable http headers and post data
@@ -47,10 +41,7 @@ function my_ajax_checker() {
         $message .= "\n>> HTTP Headers <<:\n" . $http_headers;
         $message .= "\n>> HTTP POST Data <<:\n" . $http_post;
         $message .= "\r\n\n";
-        file_put_contents($file, $message, FILE_APPEND);
-    } else {
-        $message .= "*** Not running on " . $_SERVER['REQUEST_URI'] . " based on " . $match_uri . "\n";
-    }
+        file_put_contents($file, $message, FILE_APPEND);   
 }
 
 ?>
