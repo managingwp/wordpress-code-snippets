@@ -19,7 +19,7 @@ function my_ajax_checker() {
         $enable_http_post="1";
 
         // Log to file
-        $file = dirname(__FILE__) . '/ajaxlog.txt';
+        $file = dirname(__FILE__) . '/ajaxlog.log';
         $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
         // Grab HTTP headers.
