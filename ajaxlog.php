@@ -1,17 +1,20 @@
 <?php
-/*
-/ ajaxlog.php - Record all admin_init requests to troubleshoot high admin-ajax.php requests.
-/
-/ Original code from - https://stackoverflow.com/questions/69234458/how-to-log-queries-that-go-to-wp-admin-admin-ajax-php
-/
-*/
+/**
+ * ajaxlog.php - Record all admin_init requests to troubleshoot high admin-ajax.php requests.
+ *
+ * Original code from - https://stackoverflow.com/questions/69234458/how-to-log-queries-that-go-to-wp-admin-admin-ajax-php
+ *
+**/
 
 add_action( 'admin_init', 'my_ajax_checker', 10, 2);
 
 function my_ajax_checker() {
+    // Change to 1 to match all requests, versus just admin-ajax.php this can include woocommerce cart fragements.
+    $match_all = "0";
+    // If $match_all = 1 then $match_uri is ignored.
     $match_uri = "/wp-admin/admin-ajax.php";
 
-    if ( strpos($_SERVER['REQUEST_URI'], $match_uri) !== false ) {
+    if ( strpos($_SERVER['REQUEST_URI'], $match_uri) !== false || $match_all == "1" ) {
         $message .= "*** Running on " . $_SERVER['REQUEST_URI'] . " based on " . $match_uri . "\n";
 
         // Enable and Disable http headers and post data
