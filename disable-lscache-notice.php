@@ -21,7 +21,6 @@ add_action('admin_init', function () {
 
 */
 
-*/
 add_action('wp_loaded', function () {
     remove_filter('activated_plugin', LiteSpeed\Thirdparty\LiteSpeed_Check::class.'::activated_plugin',10);
 });
