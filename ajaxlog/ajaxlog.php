@@ -6,6 +6,8 @@
  *
 **/
 
+use LearnDash\Course_Grid\AJAX;
+
 /**
  * Original code from - https://stackoverflow.com/questions/69234458/how-to-log-queries-that-go-to-wp-admin-admin-ajax-php
  * Debug, define('AJAXDEBUG','true'); in wp-config.php or user-config.php
@@ -91,7 +93,7 @@ function ajax_logger() {
     // Logged in user?
     if ( is_user_logged_in() ) {
         $logged_in = "Logged In";
-        $logged_in .= current_user_can('manage_options') ? " Admin" : "User";
+        $logged_in .= current_user_can('manage_options') ? " Admin" : " User";
         $logged_in .= " - ID: " . wp_get_current_user()->ID;
     } else {
         $logged_in="Visitor";
@@ -107,6 +109,8 @@ function ajax_logger() {
     $log_message[] = "WP-CLI: " . $is_wpcli;
     $log_message[] = "Post Data: " . $http_post;
     $log_message[] = "Server PID: " . getmypid();
+    global $wpdb;
+    $log_message[] = "mysql PID: " . $wpdb->dbh->thread_id;    
     $log_message[] = $logged_in;
     
     $log_message = implode(" | ", $log_message);
@@ -117,7 +121,7 @@ function ajax_logger() {
     if (isset($excludes)) {
         foreach ($excludes as $exclude){
             if ( strpos($log_message, $exclude) !== false ) {
-                ajax_logger_debug($log_file,"[$current_date] excluded text detected ($exclude), not logging");
+                //ajax_logger_debug($log_file,"[$current_date] excluded text detected ($exclude), not logging");
                 return;
             }
         }
