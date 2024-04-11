@@ -6,8 +6,6 @@
  *
 **/
 
-use LearnDash\Course_Grid\AJAX;
-
 /**
  * Original code from - https://stackoverflow.com/questions/69234458/how-to-log-queries-that-go-to-wp-admin-admin-ajax-php
  * Debug, define('AJAXDEBUG','true'); in wp-config.php or user-config.php
