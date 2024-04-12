@@ -6,8 +6,6 @@
  *
 **/
 
-use LearnDash\Course_Grid\AJAX;
-
 /**
  * Original code from - https://stackoverflow.com/questions/69234458/how-to-log-queries-that-go-to-wp-admin-admin-ajax-php
  * Debug, define('AJAXDEBUG','true'); in wp-config.php or user-config.php
@@ -21,6 +19,16 @@ function ajax_logger() {
     
     if (!defined('AJAX_DEBUG_ENABLED') || AJAX_DEBUG_ENABLED !== true) {
         return;
+    }
+    
+    // Log to file
+    // $file = dirname(__FILE__) . '/ajaxlog.log'; // Old method placed into wp-content/mu-plugins
+    $log_file = ABSPATH . 'ajaxlog.log';
+    $csv_file = ABSPATH . 'ajaxlog.csv';
+       
+    //rotate log file if larger than 10M
+    if (file_exists($log_file) && filesize($log_file) > 4 * 1024 * 1024) {
+        rename($log_file, $log_file . '.' . date('Y-m-d_H-i-s'));
     }
     
     
@@ -54,10 +62,6 @@ function ajax_logger() {
     $enable_http_post = "1";
     $enable_csv_output = "1";
     
-    // Log to file
-    // $file = dirname(__FILE__) . '/ajaxlog.log'; // Old method placed into wp-content/mu-plugins
-    $log_file = ABSPATH . 'ajaxlog.log';
-    $csv_file = ABSPATH . 'ajaxlog.csv';
 
     // Request Link
     $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -67,7 +71,7 @@ function ajax_logger() {
     }
     // Grab HTTP headers.
     $http_headers = "";
-    if ( $enable_http_headers == "1" ) {
+    if ( $enable_http_headers == "1" ) { 
         foreach (getallheaders() as $name => $value) {
             $http_headers .= "$name: $value;\n";
         }
