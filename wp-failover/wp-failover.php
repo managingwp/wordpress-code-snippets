@@ -7,7 +7,15 @@ Description: Monitors failover status and provides notifications.
 // Prevent direct access
 defined('ABSPATH') or die('No script kiddies please!');
 
-// Get NGINX status
+
+/**
+ * 
+ * Get Nginx Status
+ * arg $url - URL to Nginx status page
+ * 
+ * return void
+ * 
+ */
 function wpfailover_nginx_status($url) {
     // Curl stub at https://localhost/nginx_status check if returns 200    
     $ch = curl_init($url);
@@ -29,6 +37,14 @@ function wpfailover_nginx_status($url) {
     }
 }
 
+/**
+ * 
+ * Sanitize and validate filters
+ * arg $filters - Filters to sanitize and validate
+ * 
+ * return array
+ */
+
 // Sanitize and validate filters
 function wpfailover_sanitize_and_validate_filters($filters) {
     // Sanitize the input
@@ -48,7 +64,14 @@ function wpfailover_sanitize_and_validate_filters($filters) {
     return $valid_filters;
 }
 
-// Access log Requests
+/** 
+ * 
+ * Get Nginx Access Logs
+ * arg $log - Path to Nginx access log
+ * arg $filters - Filters to apply
+ * 
+ * return void
+ */
 function wpfailover_nginx_accesslogs ($log, $filters) {
     $timeWindows = [5, 15, 30]; // Time windows in seconds
 
@@ -127,13 +150,27 @@ function wpfailover_nginx_accesslogs ($log, $filters) {
     echo $output;
 }
 
+/**
+ * 
+ * Display NGINX status
+ * arg $url - URL to Nginx status page
+ * 
+ * return string
+ */
+
 function wpfailover_display_nginx_status($url) {
     ob_start();
     wpfailover_nginx_status($url);
     return ob_get_clean();
 }
 
-// Add menu item under Dashboard
+/**
+ * 
+ * Generate Status menus
+ * args none
+ * 
+ * return void
+ */
 function wpfailover_status_menu() {
     add_menu_page(
         'Failover Status',
@@ -147,116 +184,29 @@ function wpfailover_status_menu() {
 }
 add_action('admin_menu', 'wpfailover_status_menu');
 
-// Enqueue the necessary scripts and styles for the color picker
+/**
+ * 
+ * Enqueue wp-color-picker
+ * args none
+ * 
+ * return void
+ * 
+ */
 function wpfailover_enqueue_scripts() {
     wp_enqueue_style('wp-color-picker');
     wp_enqueue_script('wp-color-picker');
 }
 add_action('admin_enqueue_scripts', 'wpfailover_enqueue_scripts');
 
-// Failover Status page content
-function wpfailover_status_page() {
-    if (function_exists('opcache_reset')) {
-        opcache_reset();
-    }
+/**
+ * 
+ * Migrate settings
+ * args none
+ * 
+ * return void
+ */
 
-    $current_ip = $_SERVER['SERVER_ADDR'];    
-    $wpfailover_primary_failover_ip = get_option('wpfailover_primary_failover_ip');
-    $is_failover_active = ($current_ip !== $wpfailover_primary_failover_ip);
-    ?>
-    <div class="wrap">
-        <h2>Failover Status</h2>
-
-        <h3>Introduction</h3>
-        <p>This is a plugin for monitoring failovers.</p>
-
-        <h3>Current Server</h3>
-        <p>Hostname/IP: <?php echo gethostname() . '/' . $current_ip; ?></p>
-
-        <h3>Status</h3>
-        <p>
-            <?php 
-            if ($is_failover_active) {
-                echo '<span style="color: red; font-weight: bold;">Failover ACTIVE </span> <span class="dashicons dashicons-no-alt"></span>';
-            } else {
-                echo '<span style="color: green; font-weight: bold;">Normal Operation </span> <span class="dashicons dashicons-yes"></span>';
-            }
-            ?>
-        </p>
-
-        <h3>Settings</h3>
-        <form method="post" action="options.php">
-            <?php 
-                settings_fields('wpfailover_failover_settings');
-                do_settings_sections('wpfailover-status'); 
-            ?>
-            <table class="form-table">
-            <tr valign="top">
-                <th scope="row">Primary Failover IP</th>
-                <td>
-                    <input type="text" name="wpfailover_primary_failover_ip" value="<?php echo esc_attr(get_option('wpfailover_primary_failover_ip')); ?>" />
-                    <input type="text" name="wpfailover_primary_server_name" placeholder="Primary Server Name" value="<?php echo esc_attr(get_option('wpfailover_primary_server_name')); ?>" />
-                </td>
-            </tr>
-            <tr valign="top">
-                <th scope="row">Secondary Failover IP</th>
-                <td>
-                    <input type="text" name="wpfailover_secondary_failover_ip" value="<?php echo esc_attr(get_option('wpfailover_secondary_failover_ip')); ?>" />
-                    <input type="text" name="wpfailover_secondary_server_name" placeholder="Secondary Server Name" value="<?php echo esc_attr(get_option('wpfailover_secondary_server_name')); ?>" />
-                </td>
-            </tr>
-                <tr valign="top">
-                    <th scope="row">Failover Notification - Admin Bar</th>
-                    <td><input type="checkbox" name="wpfailover_enable_admin_bar" value="1" <?php checked(get_option('wpfailover_enable_admin_bar'), 1); ?> /></td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row">Failover Notification - Banner</th>
-                    <td><input type="checkbox" name="wpfailover_enable_banner" value="1" <?php checked(get_option('wpfailover_enable_banner'), 1); ?> /></td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row">Admin Bar Color (Failover)</th>
-                    <td><input id="color-picker" type="text" name="wpfailover_admin_bar_color" class="color-picker" value="<?php echo esc_attr(get_option('wpfailover_admin_bar_color', '#9a6400')); ?>" /></td> 
-                </tr>
-                <tr valign="top">
-                    <th scope="row">NGINX Status URL</th>
-                    <td><input type="text" name="wpfailover_nginx_status_url" size="60" value="<?php echo esc_attr(get_option('wpfailover_nginx_status_url', 'http://localhost/stub_status')); ?>" /></td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row">Nginx Access Log Path</th>
-                    <td><input type="text" name="wpfailover_nginx_access_log" size="60" value="<?php echo esc_attr(get_option('wpfailover_nginx_access_log', '/var/log/nginx/access.log')); ?>" /></td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row">Nginx Access Log Filters</th>
-                    <td><input type="text" name="wpfailover_nginx_access_log_filters" size="60" value="<?php echo esc_attr(get_option('wpfailover_nginx_access_log_filters', 'wp-login.php,xmlrpc.php,BetterUptime,Cloudflare-Healthchecks,Cloudflare-Traffic-Manager')); ?>" /></td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row">Add Cloudflare-Traffic-Manager and Cloudflare-Healthchecks to Nginx Access Log Filters</th>
-                    <td><input type="checkbox" name="wpfailover_filters_add_cloudflare" value="1" <?php checked(get_option('wpfailover_filters_add_cloudflare'), 1); ?> /></td>
-            </table>
-            <?php submit_button(); ?>
-            <button type="button" onclick="location.reload();">Refresh</button>
-        </form>
-        <div id="wpfailover-nginx-status">
-            <h3>NGINX Status</h3>
-            <pre><?php wpfailover_nginx_status(get_option('wpfailover_nginx_status_url')); ?></pre>
-        </div>
-        <div id="wpfailover-nginx-log">
-            <h3>Nginx Access Logs 5/15/30</h3>
-            <p>Filters: <?php echo get_option('wpfailover_nginx_access_log_filters', 'wp-login.php,xmlrpc.php,BetterUptime'); ?> and by default current IP and client IP</p>
-            <pre><?php wpfailover_nginx_accesslogs(get_option('wpfailover_nginx_access_log'),get_option('wpfailover_nginx_access_log_filters', 'wp-login.php,xmlrpc.php,BetterUptime,Cloudflare-Healthchecks,Cloudflare-Traffic-Manager')); ?></pre>
-        </div>
-    </div>
-
-    <script>
-    jQuery(document).ready(function($) {
-        $('.color-picker').wpColorPicker();
-    });
-    </script>
-
-    <?php
-}
-// Migrate Settings
-function wpfailover_migrate_settings (){
+ function wpfailover_migrate_settings (){
     $old_settings = [
         'primary_failover_ip',
         'secondary_failover_ip',
@@ -279,7 +229,13 @@ function wpfailover_migrate_settings (){
 }
 add_action('admin_init', 'wpfailover_migrate_settings');
 
-// Register settings
+/**
+ * 
+ * Register settings
+ * args none
+ * 
+ * return void
+ */
 function wpfailover_register_settings() {
     // Rename settings to have wpf_
 
@@ -294,12 +250,18 @@ function wpfailover_register_settings() {
     register_setting('wpfailover_failover_settings', 'wpfailover_nginx_access_log');
     register_setting('wpfailover_failover_settings', 'wpfailover_nginx_access_log_filters');
     register_setting('wpfailover_failover_settings', 'wpfailover_filters_add_cloudflare');
+    register_setting('wpfailover_failover_settings', 'wpfailover_cf_loadbalancing_logs_url');
 }
 add_action('admin_init', 'wpfailover_register_settings');
 
 
-
-// Add settings sections
+/**
+ * 
+ * Add settings sections
+ * args none
+ * 
+ * return void
+ */
 function wpfailover_add_settings_sections() {
     add_settings_section(
         'wpfailover_settings_section',
@@ -314,7 +276,13 @@ function wpfailover_settings_section_callback() {
     echo '<p>Configure failover settings here.</p>';
 }
 
-// Failover notification logic
+/**
+ * 
+ * Failover notification logic
+ * args none
+ * 
+ * return void
+ */
 function wpfailover_notification() {
     $current_ip = $_SERVER['SERVER_ADDR'];
     $primary_failover_ip = get_option('wpfailover_primary_failover_ip');
@@ -381,3 +349,138 @@ function wpfailover_notification() {
     }
 }
 add_action('init', 'wpfailover_notification');
+
+
+/** 
+ * Failover Status page
+ * args none
+ * 
+ * return void
+ */
+function wpfailover_status_page() {
+    // Reset opcache.
+    if (function_exists('opcache_reset')) {
+        opcache_reset();
+    }
+
+    $current_ip = $_SERVER['SERVER_ADDR'];    
+    $wpfailover_primary_failover_ip = get_option('wpfailover_primary_failover_ip');
+    $is_failover_active = ($current_ip !== $wpfailover_primary_failover_ip);
+    ?>
+    <div class="wrap">
+        <h1>Failover Status</h1>
+        <hr>
+        <h2>Introduction</h2>
+        <p>This is a plugin for monitoring failovers.</p>
+
+        <h2>Current Server</h2>
+        <p>Hostname/IP: <?php echo gethostname() . '/' . $current_ip; ?></p>
+
+        <hr>
+        <h2>Status</h2>
+        <p>
+            <?php 
+            if ($is_failover_active) {
+                echo '<span style="color: red; font-weight: bold;">Failover ACTIVE </span> <span class="dashicons dashicons-no-alt"></span>';
+            } else {
+                echo '<span style="color: green; font-weight: bold;">Normal Operation </span> <span class="dashicons dashicons-yes"></span>';
+            }
+            ?>
+        </p>
+
+        <hr>
+        <h2>Settings</h2>
+        <details>
+        <summary><b>Configure failover settings here.</b></summary>
+        
+        <form method="post" action="options.php">
+            <?php 
+                settings_fields('wpfailover_failover_settings');
+                do_settings_sections('wpfailover-status'); 
+            ?>
+            <table class="form-table">
+            <tr valign="top">
+                <th scope="row">Primary Failover IP</th>
+                <td>
+                    <input type="text" name="wpfailover_primary_failover_ip" value="<?php echo esc_attr(get_option('wpfailover_primary_failover_ip')); ?>" />
+                    <input type="text" name="wpfailover_primary_server_name" placeholder="Primary Server Name" value="<?php echo esc_attr(get_option('wpfailover_primary_server_name')); ?>" />
+                </td>
+            </tr>
+            <tr valign="top">
+                <th scope="row">Secondary Failover IP</th>
+                <td>
+                    <input type="text" name="wpfailover_secondary_failover_ip" value="<?php echo esc_attr(get_option('wpfailover_secondary_failover_ip')); ?>" />
+                    <input type="text" name="wpfailover_secondary_server_name" placeholder="Secondary Server Name" value="<?php echo esc_attr(get_option('wpfailover_secondary_server_name')); ?>" />
+                </td>
+            </tr>
+                <tr valign="top">
+                    <th scope="row">Failover Notification - Admin Bar</th>
+                    <td><input type="checkbox" name="wpfailover_enable_admin_bar" value="1" <?php checked(get_option('wpfailover_enable_admin_bar'), 1); ?> /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row">Failover Notification - Banner</th>
+                    <td><input type="checkbox" name="wpfailover_enable_banner" value="1" <?php checked(get_option('wpfailover_enable_banner'), 1); ?> /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row">Admin Bar Color (Failover)</th>
+                    <td><input id="color-picker" type="text" name="wpfailover_admin_bar_color" class="color-picker" value="<?php echo esc_attr(get_option('wpfailover_admin_bar_color', '#9a6400')); ?>" /></td> 
+                </tr>
+                <tr valign="top">
+                    <th scope="row">Coudflare Load Balancer Logs URL</th>
+                    <td><input type="text" name="wpfailover_cf_loadbalancing_logs_url" size="60" value="<?php echo esc_attr(get_option('wpfailover_cf_loadbalancing_logs_url', '')); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row">NGINX Status URL</th>
+                    <td><input type="text" name="wpfailover_nginx_status_url" size="60" value="<?php echo esc_attr(get_option('wpfailover_nginx_status_url', 'http://localhost/stub_status')); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row">Nginx Access Log Path</th>
+                    <td><input type="text" name="wpfailover_nginx_access_log" size="60" value="<?php echo esc_attr(get_option('wpfailover_nginx_access_log', '/var/log/nginx/access.log')); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row">Nginx Access Log Filters</th>
+                    <td><input type="text" name="wpfailover_nginx_access_log_filters" size="60" value="<?php echo esc_attr(get_option('wpfailover_nginx_access_log_filters', 'wp-login.php,xmlrpc.php,BetterUptime,Cloudflare-Healthchecks,Cloudflare-Traffic-Manager')); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row">Add Cloudflare-Traffic-Manager and Cloudflare-Healthchecks to Nginx Access Log Filters</th>
+                    <td><input type="checkbox" name="wpfailover_filters_add_cloudflare" value="1" <?php checked(get_option('wpfailover_filters_add_cloudflare'), 1); ?> /></td>
+            </table>
+            <?php submit_button(); ?>
+            <button type="button" onclick="location.reload();">Refresh</button>
+        </form>
+        </details>
+        <hr>
+        <h2>Status</h2>
+        <h3>Cloudflare Failover</h3>
+        <div>
+            <a href="<?php echo get_option('wpfailover_cf_loadbalancing_logs_url'); ?>" target="_blank">Cloudflare Load Balancer Logs</a>
+        </div>
+        <div class="failover-wrapper" style="
+                border: 1px solid black;
+                border-radius: 15px;
+                padding: 10px;
+                margin-top:20px;
+                background-color: lightgrey;
+                ">        
+            <h3>NGINX Status</h3>
+            <div id="wpfailover-nginx-status">    
+                <pre><?php wpfailover_nginx_status(get_option('wpfailover_nginx_status_url')); ?></pre>
+            </div>
+            <h3>Nginx Access Logs 5/15/30</h3>
+            <div id="wpfailover-nginx-log">
+                
+                <p>Filters: <?php echo get_option('wpfailover_nginx_access_log_filters', 'wp-login.php,xmlrpc.php,BetterUptime'); ?> and by default current IP and client IP</p>
+                <pre><?php wpfailover_nginx_accesslogs(get_option('wpfailover_nginx_access_log'),get_option('wpfailover_nginx_access_log_filters', 'wp-login.php,xmlrpc.php,BetterUptime,Cloudflare-Healthchecks,Cloudflare-Traffic-Manager')); ?></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    jQuery(document).ready(function($) {
+        $('.color-picker').wpColorPicker();
+    });
+    </script>
+
+    <?php
+}
+
