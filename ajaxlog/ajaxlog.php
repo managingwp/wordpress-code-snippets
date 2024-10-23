@@ -23,8 +23,8 @@ function ajax_logger() {
     
     // Log to file
     // $file = dirname(__FILE__) . '/ajaxlog.log'; // Old method placed into wp-content/mu-plugins
-    $log_file = ABSPATH . 'ajaxlog.log';
-    $csv_file = ABSPATH . 'ajaxlog.csv';
+    $log_file = ABSPATH . '/logs/ajaxlog.log';
+    $csv_file = ABSPATH . '/logs/ajaxlog.csv';
        
     //rotate log file if larger than 10M
     if (file_exists($log_file) && filesize($log_file) > 4 * 1024 * 1024) {
@@ -135,6 +135,11 @@ function ajax_logger() {
 
 
 function ajax_logger_debug ($log_file, $log_message) {
+    // Ensure the directory exists
+    $log_dir = dirname($log_file);
+    if (!file_exists($log_dir)) {
+        mkdir($log_dir, 0755, true);
+    }
     file_put_contents($log_file, "DEBUG: $log_message \n", FILE_APPEND);
 }
 
