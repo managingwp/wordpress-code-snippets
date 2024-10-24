@@ -1,7 +1,9 @@
 <?php
-/*
-Plugin Name: Change Admin Email
-Description: Changes the admin email address if it hasn't been changed already without triggering email validation.
+/**
+ * Plugin Name: Change Admin Email
+ * Description: Changes the admin email address if it hasn't been changed already without triggering email validation.
+ * Type: mu-plugin
+ * Status: Complete
 */
 
 // Ensure this is being run within the context of WordPress.

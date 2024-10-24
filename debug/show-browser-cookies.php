@@ -1,5 +1,11 @@
 <?php
-/* Shows your browsers cookies */
+/** 
+ * show-browser-cookies.php
+ * Description Shows your browsers cookies
+ * Type: snippet
+ * Status: Complete
+ */
+
 add_action( 'admin_menu', function () {
 		add_menu_page(
 			__( 'Your Cookies', 'my-textdomain' ),

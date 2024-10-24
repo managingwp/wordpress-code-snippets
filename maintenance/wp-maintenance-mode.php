@@ -1,6 +1,9 @@
 <?php
-
-# Originally from https://wordpress.stackexchange.com/questions/398037/maintenance-mode-excluding-site-administrators
+/**
+ * wp-maintenance-mode.php
+ * Description: Maintenance mode for WordPress - Originally from https://wordpress.stackexchange.com/questions/398037/maintenance-mode-excluding-site-administrators
+ * Status: Complete
+ */
 
 function wp_maintenance_mode() {
    if (!current_user_can('administrator')) {

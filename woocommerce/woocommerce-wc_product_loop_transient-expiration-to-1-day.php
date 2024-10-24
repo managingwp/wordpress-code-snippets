@@ -1,7 +1,12 @@
 <?php
-/*
-Credit: https://github.com/mainwp/Code-Snippets-Functions/blob/master/Execute%20a%20function%20on%20a%20child%20site/WooCommerce/change-wc_product_loop_transient-expiration-to-1-day.txt
-*/
+/**
+ * woocommerce-wc_product_loop_transient-expiration-to-1-day.php
+ * Description: Change wc_product_loop transient expiration to 1 day
+ * Type: snippet
+ * Status: Complete
+ *
+ * Credit: https://github.com/mainwp/Code-Snippets-Functions/blob/master/Execute%20a%20function%20on%20a%20child%20site/WooCommerce/change-wc_product_loop_transient-expiration-to-1-day.txt
+ */
 
 add_action( 'setted_transient', 'mmx_wc_product_loop_transient', 50, 3 );
 function mmx_wc_product_loop_transient( $transient, $value, $expiration ){

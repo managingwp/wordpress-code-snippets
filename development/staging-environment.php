@@ -1,9 +1,13 @@
 <?php
-# Originally from https://pantheon.io/docs/environment-specific-config
-# Also look at https://kamilgrzegorczyk.com/2018/05/02/how-to-disable-plugins-on-certain-environment/
-#
-# This snippet will enable and disable plugins based on the WP_ENVIRONMENT_TYPE
-#
+/**
+ * staging-environment.php
+ * Description: This snippet will enable and disable plugins based on the WP_ENVIRONMENT_TYPE 
+ * Type: Snippet
+ * Status: Complete
+ * 
+ * Originally from https://pantheon.io/docs/environment-specific-config
+ * Also look at https://kamilgrzegorczyk.com/2018/05/02/how-to-disable-plugins-on-certain-environment/
+ */
 
 # List Development Plugins
 $plugins_development = array(

@@ -1,9 +1,10 @@
 <?php
-/*
-Plugin Name: Application Logs
-Description: Displays top 10 lines from a log file in the WordPress admin section.
-Version: 1.0
-Author: Your Name
+/**
+ * Plugin Name: Application Logs
+ * Description: Displays top 10 lines from a log file in the WordPress admin section.
+ * Version: 1.0
+ * Author: Your Name
+ * Status: Complete
 */
 
 // Add a menu item under Tools

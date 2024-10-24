@@ -1,9 +1,10 @@
 <?php
 /**
- * Plugin Name:       Ajax Logger
- * Plugin URI:        https://managingwp.io
- * Description:       Record all admin_init requests to troubleshoot high admin-ajax.php requests.
- *
+ * ajaxlog.php
+ * Description: Record all admin_init requests to troubleshoot high admin-ajax.php requests.
+ * Plugin Name: Ajax Logger
+ * Plugin URI: https://managingwp.io
+ * Status: Complete
 **/
 
 /**

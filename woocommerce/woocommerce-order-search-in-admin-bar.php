@@ -1,8 +1,14 @@
 <?php 
-// Credit - https://stackoverflow.com/questions/48629362/wordpress-woocommerce-shop-order-search-in-admin-bar
-// Add shop order search in the admin bar
-// Fixes by Ovidiu Maghetiu from https://wpcodebox.com/
-// Copied from https://gist.github.com/ovidiumght/9a47917169b003dba50114c6b6fd30ed?fbclid=IwAR0iw_fbJAvBeKSxPKlAMUnm8M1N7cZzOTMSKj0LCElnnyFFk5-XVfzIscs
+/**
+ * woocommerce-order-search-in-admin-bar.php
+ * Description: Add shop order search in the admin bar
+ * Type: Snippet
+ * Status: Complete
+ *
+ * Credit - https://stackoverflow.com/questions/48629362/wordpress-woocommerce-shop-order-search-in-admin-bar
+ * Fixes by Ovidiu Maghetiu from https://wpcodebox.com/
+ * Copied from https://gist.github.com/ovidiumght/9a47917169b003dba50114c6b6fd30ed?fbclid=IwAR0iw_fbJAvBeKSxPKlAMUnm8M1N7cZzOTMSKj0LCElnnyFFk5-XVfzIscs
+ */
 
 add_action('wp_before_admin_bar_render', function() {
     // Get current screen

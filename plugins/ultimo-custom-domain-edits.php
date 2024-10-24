@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * Plugin Name: Ultimo Custom Domain Edits
+ * Description: Custom Domain Edits for Ultimo
+ * Version: 1.0
+ * Author: LMT Solutions 
+ * Author URI: https://lmt.ca
+ * License: GPL2
+ * Status: Complete
+ */
 #wu_custom_domain_after
 function custom_domain_text () {  
     $server_addr = WU_Settings::get_setting('network_ip');

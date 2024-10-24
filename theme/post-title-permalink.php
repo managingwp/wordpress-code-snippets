@@ -1,8 +1,16 @@
 <?php
-/* 
-Original code, which works but affects all titles, even latest post widgets.
-# https://www.forumming.com/question/14734/change-the-title-of-a-page-dynamically
-add_filter('loop_start', function () {
+/** 
+ * post-title-permalink.php
+ * Description: This code will add a link to the title of the post, so that the title is clickable.
+ * Type: Snippet
+ * Status: Complete
+ * 
+ * Original code, which works but affects all titles, even latest post widgets.
+ * https://www.forumming.com/question/14734/change-the-title-of-a-page-dynamically
+ */
+
+/*
+ add_filter('loop_start', function () {
     add_filter('the_title', function ($title) {
             return '<a href="'.get_permalink( $post->ID ).'">'.$title.'</a>';
     });

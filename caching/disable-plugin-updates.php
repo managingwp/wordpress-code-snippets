@@ -1,5 +1,10 @@
 <?php
-/* Remove plugin update notices  */
+/**
+ * disable-plugin-updates.php
+ * Description: Remove plugin update notices
+ * Type: snippet
+ * Status: Complete
+ **/
 add_filter( 'site_transient_update_plugins', function ( $value ) {
    $plugins_disable=[
       "canada-post-woocommerce-shipping-premium",

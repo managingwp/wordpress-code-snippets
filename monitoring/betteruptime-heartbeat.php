@@ -1,13 +1,16 @@
 <?
-/* betteruptime-heartbeat.php
- 
- Originally from https://www.sprucely.net/knowledge-base/monitoring-wordpress-cron-via-heartbeat-checks/
- Add define( 'BETTERUPTIME_CRON_MONITOR_KEY', 'SXuNXxHWREsstjnXrBMhNx3B' );
- 
+/**
+ * betteruptime-heartbeat.php
+ * Description: Monitor WordPress cron via Better Uptime heartbeat checks. Originally from https://www.sprucely.net/knowledge-base/monitoring-wordpress-cron-via-heartbeat-checks/
+ * Status: Complete
+ * 
+ * Add define( 'BETTERUPTIME_CRON_MONITOR_KEY', 'SXuNXxHWREsstjnXrBMhNx3B' ); to wp-config.php
+ * 
+ *
 */
 
-// Cron Heartbeat Monitoring.
 add_action( 'betteruptime_heartbeat_monitor', 'betteruptime_remote_heartbeat_ping' );
+
 /**
  * Ping remote Better Uptime heartbeat URL using key stored in wp-config.php constant.
  *
@@ -18,8 +21,12 @@ function betteruptime_remote_heartbeat_ping() {
                 wp_safe_remote_get( 'https://betteruptime.com/api/v1/heartbeat/' . BETTERUPTIME_CRON_MONITOR_KEY );
         }
 }
-// Add cron interval.
+
+/**
+ * Add cron interval.
+ */
 add_filter( 'cron_schedules', 'betteruptime_cron_interval' );
+
 /**
  * Create cron interval for every 5 minutes.
  *

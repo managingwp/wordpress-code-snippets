@@ -1,8 +1,9 @@
 <?
 /**
- *
- * Pull Contact Form 6 form name and ID's into a select field called form_id dynamically.
- *
+ * acf-pull-contact-form-name-ids.php
+ * Description: Pull Contact Form 6 form name and ID's into a select field called form_id dynamically.
+ * Type: snippet
+ * Status: Complete
  **/
 function populate_acf_field_with_form_data($field) {
 	$field['choices'] = array();

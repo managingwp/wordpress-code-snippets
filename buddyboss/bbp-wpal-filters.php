@@ -1,15 +1,16 @@
 <?php
 /*
-Plugin Name: BBP WPAL Filters
-Plugin URI:
-Description: BuddyBoss Platform Filters to improve page speed.
-Version: 1.0.1
-Author:
-Author URI:
-License: Copyright (c) 2012-2021 David Bullock, Web Power and Light
-Text Domain: bbp-wpal
-Requires at least: 5.0
-Requires PHP: 7.0
+ * Plugin Name: BBP WPAL Filters
+ * Plugin URI:
+ * Description: BuddyBoss Platform Filters to improve page speed.
+ * Version: 1.0.1
+ * Author:
+ * Author URI:
+ * License: Copyright (c) 2012-2021 David Bullock, Web Power and Light
+ * Text Domain: bbp-wpal
+ * Requires at least: 5.0
+ * Requires PHP: 7.0
+ * Status: Complete
 */
 
 if (! defined('ABSPATH') ) {

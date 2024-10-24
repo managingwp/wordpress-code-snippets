@@ -1,6 +1,10 @@
 <?php
-/*
-Disables the admin notice Litespeeds LSCache generates about conflicting plugins installed
+/**
+ * disable-lscache-notice.php
+ * Description: Disables the admin notice Litespeeds LSCache generates about conflicting plugins installed
+ * Type: snippet
+ * Status: WIP
+ */
 
 This is a WIP and not functioning yet.
 

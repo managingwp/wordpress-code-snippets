@@ -1,6 +1,10 @@
 <?php
 /**
- * Exclude Gravity Forms or Stripe from caching
+ * nginx-gravity-forms-stripe-cache-exclude.php
+ * Description: Exclude Gravity Forms or Stripe from caching
+ * Type: snippet
+ * Status: Complete
+ * 
  * Credit: Aon @ GridPane Community forum https://community.gridpane.com/t/gravity-forms-stripe-exclude-a-page-from-nginx-server-caching/3621/2
  * 
  * -----------------------------------------------------------------------------

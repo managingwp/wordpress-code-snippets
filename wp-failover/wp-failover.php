@@ -1,7 +1,8 @@
 <?php
-/*
-Plugin Name: Failover Status Monitor
-Description: Monitors failover status and provides notifications.
+/**
+ * Plugin Name: Failover Status Monitor
+ * Description: Monitors failover status and provides notifications.
+ * Status: Complete
 */
 
 // Prevent direct access

@@ -1,6 +1,9 @@
 <?php
-/*
-Log's admin notices on admin_init, great for finding admin_notices to hide.
+/**
+ * log-admin-notices.php
+ * Description: Log's admin notices on admin_init, great for finding admin_notices to hide.
+ * Type: snippet
+ * Status: Complete
 */
 
 add_action( 'admin_init', function () {

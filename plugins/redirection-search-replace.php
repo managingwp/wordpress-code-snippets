@@ -1,12 +1,18 @@
 <?php
 /**
+ * redirection-search-replace.php
+ * Description: This script has two objectives, replace redirection_items and update
+ * Type: script
+ * Status: Complete
+ *
  * This script has two objectives, replace redirection_items and update 
  * 
- * 1. Search and replace for the Redirection plugin. This script will search for all rows in the redirection_items table 
- * where the action_data column contains json and the substring 'domain.com' and replace it with the url_from value.
+ * 1. Search and replace for the redirection_items table where the action_data column contains 
+ * json and the substring 'domain.com', then replace action_data cell with the url_from value.
  * 
- * 2. Find all rows in the redirection_items table where the url or match_url column does not start with the sub-directory
- * of the site and update it with the sub-directory prefix for all sites except the main site.
+ * 2. Find all rows in the redirection_items table where the url or match_url column does not start 
+ * with the sub-directory of the site and update it with the sub-directory prefix for all sites 
+ * except the main site.
  */
 global $wpdb;
 
@@ -115,4 +121,3 @@ foreach ($sites as $site) {
 
 
 ?>
-Copied
