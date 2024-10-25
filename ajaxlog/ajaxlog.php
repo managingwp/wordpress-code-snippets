@@ -1,9 +1,11 @@
 <?php
 
 /**
- * Plugin Name:       Ajax Logger
- * Description:       Record all admin_init requests to troubleshoot high admin-ajax.php requests.
- *
+ * ajaxlog.php
+ * Description: Record all admin_init requests to troubleshoot high admin-ajax.php requests.
+ * Plugin Name: Ajax Logger
+ * Plugin URI: https://managingwp.io
+ * Status: Complete
  **/
 
 /**
@@ -50,7 +52,6 @@ function ajax_logger() {
         $match_uri = array($match_uri);
     }
 
-
     // Exclude any text
     if (defined('AJAX_DEBUG_EXCLUDES')) {
         $excludes = AJAX_DEBUG_EXCLUDES;
@@ -60,15 +61,10 @@ function ajax_logger() {
         }
     }
 
-
-
-    //convert to array if not already, so that can iterate it later
-
     // Enable and Disable http headers and post data
     $enable_http_headers = "0";
     $enable_http_post = "1";
     $enable_csv_output = "1";
-
 
     // Request Link
     $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -147,7 +143,6 @@ function log_execution_time() {
     $log_message .= " | Duration: " . number_format($duration, 4) . " seconds\n";
     ajax_logger_debug($log_file, $log_message);
 }
-
 
 function ajax_logger_debug($log_file, $log_message) {
     // Ensure the directory exists
