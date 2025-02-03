@@ -71,7 +71,11 @@ for DIRECTORY in $DIRECTORIES; do
     echo "" >> $README_SNIPPETS_FILE
 done
 
+# -- Generate CHANGELOG.md
+echo "# Changelog" > CHANGELOG.md
+git log --pretty=format:"## %s%n%b%n" | sed '/^## /b; /^[[:space:]]*$/b; s/^/* /' >> CHANGELOG.md
+
 # Generate README.md
-cat README-header.md $README_SNIPPETS_FILE > README.md
+cat README-header.md $README_SNIPPETS_FILE CHANGELOG.md > README.md
 
 

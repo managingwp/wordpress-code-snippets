@@ -84,6 +84,7 @@
 | Title | Type | Status | Description |
 | ----- | ---- | ------ | ----------- |
 | [redirection-search-replace.php](./plugins/redirection-search-replace.php) | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
+| [Plugin Name: Simple Membership Members Per Page](./plugins/simple-membership-members-per-page.php) | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
 | [Ultimo Custom Domain Edits](./plugins/ultimo-custom-domain-edits.php) | Plugin | :white_check_mark: | Custom Domain Edits for Ultimo |
 
 ## [tests](tests)
