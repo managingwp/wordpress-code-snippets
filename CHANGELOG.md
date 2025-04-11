@@ -1,4 +1,16 @@
 # Changelog
+## Release 1.3.4
+* feat(caching): Added nginx-helper-purge-schedule.php
+
+
+## Release 1.3.3
+* Removed wp-cli package cron logger and created it's own repository.
+
+
+## Release 1.3.2
+* feat(wp-cli): Added wp-cli package cron-logger
+
+
 ## Release 1.3.1
 * feat: Addd Simple Membership member per page snippet
 * improvement: Updated generate-readme.sh to generate CHANGELOG.md

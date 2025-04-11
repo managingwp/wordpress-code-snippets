@@ -32,6 +32,7 @@
 | [disable-lscache-notice.php](./caching/disable-lscache-notice.php) | snippet | :construction: | Disables the admin notice Litespeeds LSCache generates about conflicting plugins installed |
 | [disable-plugin-updates.php](./caching/disable-plugin-updates.php) | snippet | :white_check_mark: | Remove plugin update notices |
 | [nginx-gravity-forms-stripe-cache-exclude.php](./caching/nginx-gravity-forms-stripe-cache-exclude.php) | snippet | :white_check_mark: | Exclude Gravity Forms or Stripe from caching |
+| [nginx-helper-purge-schedule.php](./caching/nginx-helper-purge-schedule.php) | snippet | :white_check_mark: | Purge NGINX cache when a scheduled post is published |
 
 ## [core](core)
 

@@ -43,6 +43,7 @@ The status field is used to indicate the current status of the snippet. This is 
 | [disable-lscache-notice.php](./caching/disable-lscache-notice.php) | snippet | :construction: | Disables the admin notice Litespeeds LSCache generates about conflicting plugins installed |
 | [disable-plugin-updates.php](./caching/disable-plugin-updates.php) | snippet | :white_check_mark: | Remove plugin update notices |
 | [nginx-gravity-forms-stripe-cache-exclude.php](./caching/nginx-gravity-forms-stripe-cache-exclude.php) | snippet | :white_check_mark: | Exclude Gravity Forms or Stripe from caching |
+| [nginx-helper-purge-schedule.php](./caching/nginx-helper-purge-schedule.php) | snippet | :white_check_mark: | Purge NGINX cache when a scheduled post is published |
 
 ## [core](core)
 
@@ -125,6 +126,18 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | Plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Release 1.3.4
+* feat(caching): Added nginx-helper-purge-schedule.php
+
+
+## Release 1.3.3
+* Removed wp-cli package cron logger and created it's own repository.
+
+
+## Release 1.3.2
+* feat(wp-cli): Added wp-cli package cron-logger
+
+
 ## Release 1.3.1
 * feat: Addd Simple Membership member per page snippet
 * improvement: Updated generate-readme.sh to generate CHANGELOG.md
