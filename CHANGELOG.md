@@ -1,4 +1,9 @@
 # Changelog
+## Relase 1.3.5
+* docs(readme): Updated README-header.md to add in generation process
+* feat(cache): Added disable-wp-rocket-lscache.php
+
+
 ## Release 1.3.4
 * feat(caching): Added nginx-helper-purge-schedule.php
 

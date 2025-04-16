@@ -9,3 +9,6 @@ The status field is used to indicate the current status of the snippet. This is 
 * WIP - :construction:
 * Unknown - :question:
 * Broken - :x:
+
+# Generate README.md
+* Run generate-readme.sh to generate the README.md file.

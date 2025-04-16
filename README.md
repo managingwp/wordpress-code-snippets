@@ -9,6 +9,9 @@ The status field is used to indicate the current status of the snippet. This is 
 * WIP - :construction:
 * Unknown - :question:
 * Broken - :x:
+
+# Generate README.md
+* Run generate-readme.sh to generate the README.md file.
 # Minor Snippets
 ## [acf](acf)
 
@@ -42,6 +45,7 @@ The status field is used to indicate the current status of the snippet. This is 
 | ----- | ---- | ------ | ----------- |
 | [disable-lscache-notice.php](./caching/disable-lscache-notice.php) | snippet | :construction: | Disables the admin notice Litespeeds LSCache generates about conflicting plugins installed |
 | [disable-plugin-updates.php](./caching/disable-plugin-updates.php) | snippet | :white_check_mark: | Remove plugin update notices |
+| [Disable WP Rocket Cache when Litespeed Cache is enabled. ](./caching/disable-wp-rocket-lscache.php) | mu-plugin | :white_check_mark: | This plugin disables WP Rocket cache when Litespeed Cache is enabled. It checks if Litespeed Cache is active and if so, it disables WP Rocket cache. |
 | [nginx-gravity-forms-stripe-cache-exclude.php](./caching/nginx-gravity-forms-stripe-cache-exclude.php) | snippet | :white_check_mark: | Exclude Gravity Forms or Stripe from caching |
 | [nginx-helper-purge-schedule.php](./caching/nginx-helper-purge-schedule.php) | snippet | :white_check_mark: | Purge NGINX cache when a scheduled post is published |
 
@@ -126,6 +130,11 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | Plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Relase 1.3.5
+* docs(readme): Updated README-header.md to add in generation process
+* feat(cache): Added disable-wp-rocket-lscache.php
+
+
 ## Release 1.3.4
 * feat(caching): Added nginx-helper-purge-schedule.php
 
