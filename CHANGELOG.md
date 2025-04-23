@@ -1,4 +1,9 @@
 # Changelog
+## Release 1.3.6
+* improvement: Added better detection to disable-wp-rocket-lscache.php
+* fix: Errors with disable-lscache-notice.php
+
+
 ## Relase 1.3.5
 * docs(readme): Updated README-header.md to add in generation process
 * feat(cache): Added disable-wp-rocket-lscache.php
