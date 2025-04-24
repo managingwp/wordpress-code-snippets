@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.3.7
+* feat(ultimo): Added ultimo-api-fix.php
+
+
 ## Release 1.3.6
 * improvement: Added better detection to disable-wp-rocket-lscache.php
 * fix: Errors with disable-lscache-notice.php

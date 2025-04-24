@@ -101,6 +101,12 @@
 | ----- | ---- | ------ | ----------- |
 | [post-title-permalink.php](./theme/post-title-permalink.php) | Snippet | :white_check_mark: | This code will add a link to the title of the post, so that the title is clickable. |
 
+## [ultimo](ultimo)
+
+| Title | Type | Status | Description |
+| ----- | ---- | ------ | ----------- |
+| [WP Ultimo API Fix](./ultimo/ultimo-api-fix.php) | * Type: snippet | :white_check_mark: | Fixes the WP Ultimo API calls that fail and timeout after 10 seconds. |
+
 ## [woocommerce](woocommerce)
 
 | Title | Type | Status | Description |

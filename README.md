@@ -115,6 +115,12 @@ The status field is used to indicate the current status of the snippet. This is 
 | ----- | ---- | ------ | ----------- |
 | [post-title-permalink.php](./theme/post-title-permalink.php) | Snippet | :white_check_mark: | This code will add a link to the title of the post, so that the title is clickable. |
 
+## [ultimo](ultimo)
+
+| Title | Type | Status | Description |
+| ----- | ---- | ------ | ----------- |
+| [WP Ultimo API Fix](./ultimo/ultimo-api-fix.php) | * Type: snippet | :white_check_mark: | Fixes the WP Ultimo API calls that fail and timeout after 10 seconds. |
+
 ## [woocommerce](woocommerce)
 
 | Title | Type | Status | Description |
@@ -130,6 +136,10 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | Plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Release 1.3.7
+* feat(ultimo): Added ultimo-api-fix.php
+
+
 ## Release 1.3.6
 * improvement: Added better detection to disable-wp-rocket-lscache.php
 * fix: Errors with disable-lscache-notice.php
