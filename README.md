@@ -60,6 +60,7 @@ The status field is used to indicate the current status of the snippet. This is 
 | Title | Type | Status | Description |
 | ----- | ---- | ------ | ----------- |
 | [log-hook-calls.php](./debug/log-hook-calls.php) | Plugin | :white_check_mark: | Log all hook calls to a file |
+| [PHP Memory Info](./debug/php-memory.php) | mu-plugin | :white_check_mark: | Adds a Tools -> PHP Memory page to display PHP ini and WordPress memory settings and current usage. |
 | [show-browser-cookies.php](./debug/show-browser-cookies.php) | snippet | :white_check_mark: |  * Description Shows your browsers cookies |
 | [Application Logs](./debug/show-logs-admin.php) | Plugin | :white_check_mark: | Displays top 10 lines from a log file in the WordPress admin section. |
 
@@ -136,6 +137,10 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | Plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Relase 1.3.8
+* feat(debug): Added php-memory.php
+
+
 ## Release 1.3.7
 * feat(ultimo): Added ultimo-api-fix.php
 

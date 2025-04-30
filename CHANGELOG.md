@@ -1,4 +1,8 @@
 # Changelog
+## Relase 1.3.8
+* feat(debug): Added php-memory.php
+
+
 ## Release 1.3.7
 * feat(ultimo): Added ultimo-api-fix.php
 
