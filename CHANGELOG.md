@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.3.9
+* feat(debug): Added wp-redirect-log.php mu-plugin
+
+
 ## Relase 1.3.8
 * feat(debug): Added php-memory.php
 
