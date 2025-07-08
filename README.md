@@ -24,6 +24,7 @@ The status field is used to indicate the current status of the snippet. This is 
 | Title | Type | Status | Description |
 | ----- | ---- | ------ | ----------- |
 | [Change Admin Email](./admin/change-admin-email.php) | mu-plugin | :white_check_mark: | Changes the admin email address if it hasn't been changed already without triggering email validation. |
+| [Disable WooCommerce Checkout & Restrict Logins to Admins](./admin/disable-checkout-and-limit-login.php) | mu-plugin | :white_check_mark: | Disables WooCommerce checkout and blocks login for all users except administrators. |
 | [log-admin-notices.php](./admin/log-admin-notices.php) | snippet | :white_check_mark: | Log's admin notices on admin_init, great for finding admin_notices to hide. |
 | [mu-dashboard-shortcode.php](./admin/mu-dashboard-shortcode.php) | snippet | :construction: | Unsure what the usage of this snippet is. |
 
@@ -138,6 +139,10 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | Plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Release 1.4.0
+* Added disable-checkout-and-limit-login.php
+
+
 ## Release 1.3.9
 * feat(debug): Added wp-redirect-log.php mu-plugin
 

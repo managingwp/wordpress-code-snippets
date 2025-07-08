@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.4.0
+* Added disable-checkout-and-limit-login.php
+
+
 ## Release 1.3.9
 * feat(debug): Added wp-redirect-log.php mu-plugin
 
