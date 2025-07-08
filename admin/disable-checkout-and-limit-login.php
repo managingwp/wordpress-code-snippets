@@ -6,9 +6,38 @@
  * Status: Complete
 */
 
+// Only activate if maintenance mode is enabled in wp-config.php
+// Add this line to wp-config.php to enable: define('WP_MAINTENANCE_MODE', true);
+if (!defined('WP_MAINTENANCE_MODE') || !WP_MAINTENANCE_MODE) {
+    return;
+}
+
+// Array of user IDs that can bypass all restrictions
+$bypass_user_ids = [
+    698,    // User 1
+    4829,   // User 2
+    // Add more user IDs as needed
+];
+
+// Helper function to check if current user can bypass restrictions
+function can_bypass_restrictions($bypass_user_ids = []) {
+    // Allow administrators
+    if (current_user_can('manage_options')) {
+        return true;
+    }
+    
+    // Allow specific user IDs
+    $current_user_id = get_current_user_id();
+    if (in_array($current_user_id, $bypass_user_ids)) {
+        return true;
+    }
+    
+    return false;
+}
+
 // Block checkout by redirecting to cart with disabled message
-add_action('template_redirect', function () {
-    if (function_exists('is_checkout') && is_checkout() && !current_user_can('manage_options')) {
+add_action('template_redirect', function () use ($bypass_user_ids) {
+    if (function_exists('is_checkout') && is_checkout() && !can_bypass_restrictions($bypass_user_ids)) {
         // Add notice about disabled checkout
         wc_add_notice(__('Checkout is currently disabled due to site maintenance, please try again later.'), 'error');
         
@@ -19,19 +48,26 @@ add_action('template_redirect', function () {
 });
 
 // Disable cart and checkout endpoints for non-admins
-add_filter('woocommerce_cart_redirect_after_error', function ($url) {
-    if (!current_user_can('manage_options')) {
+add_filter('woocommerce_cart_redirect_after_error', function ($url) use ($bypass_user_ids) {
+    if (!can_bypass_restrictions($bypass_user_ids)) {
         return wc_get_cart_url();
     }
     return $url;
 });
 
 // Prevent non-admins from logging in
-add_action('wp_authenticate_user', function ($user) {
-    if (!user_can($user, 'administrator')) {
-        return new WP_Error('access_denied', __('Only administrators can log in at this time due to site maintenance.'));
+add_action('wp_authenticate_user', function ($user) use ($bypass_user_ids) {
+    // Allow administrators
+    if (user_can($user, 'administrator')) {
+        return $user;
     }
-    return $user;
+    
+    // Allow specific user IDs
+    if (in_array($user->ID, $bypass_user_ids)) {
+        return $user;
+    }
+    
+    return new WP_Error('access_denied', __('Only administrators can log in at this time due to site maintenance.'));
 }, 10, 1);
 
 // Optional: Show message on login page
@@ -77,9 +113,9 @@ add_action('wp_ajax_nopriv_custom_login', function () {
 });
 
 // Handle REST API login attempts
-add_action('rest_api_init', function () {
-    add_filter('rest_authentication_errors', function ($result) {
-        if (!is_wp_error($result) && !current_user_can('manage_options')) {
+add_action('rest_api_init', function () use ($bypass_user_ids) {
+    add_filter('rest_authentication_errors', function ($result) use ($bypass_user_ids) {
+        if (!is_wp_error($result) && !can_bypass_restrictions($bypass_user_ids)) {
             return new WP_Error('maintenance_mode', 'Logins are currently restricted to administrators due to site maintenance.', ['status' => 503]);
         }
         return $result;
