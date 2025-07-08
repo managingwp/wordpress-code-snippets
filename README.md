@@ -139,6 +139,10 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | Plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Release 1.4.1
+* Updated disable-checkout-and-limit-login.php to be disabled via define('WP_MAINTENANCE_MODE', true);
+
+
 ## Release 1.4.0
 * Added disable-checkout-and-limit-login.php
 

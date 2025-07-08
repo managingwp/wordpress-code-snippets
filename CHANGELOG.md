@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.4.1
+* Updated disable-checkout-and-limit-login.php to be disabled via define('WP_MAINTENANCE_MODE', true);
+
+
 ## Release 1.4.0
 * Added disable-checkout-and-limit-login.php
 
