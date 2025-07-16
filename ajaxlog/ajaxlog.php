@@ -4,6 +4,7 @@
  * Description: Record all admin_init requests to troubleshoot high admin-ajax.php requests.
  * Plugin Name: Ajax Logger
  * Plugin URI: https://managingwp.io
+ * Version: 1.0.0
  * Status: Complete
 **/
 

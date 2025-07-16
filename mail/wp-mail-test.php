@@ -2,6 +2,7 @@
 /**
  * wp-mail-test.php
  * Description: Used to send a test email to test the wp_mail function.
+ * Version: 1.0.0
  * Status: Complete
  * 
  * Visit the media upload section to trigger the email.

@@ -2,6 +2,7 @@
 /**
  * Plugin Name: Change Admin Email
  * Description: Changes the admin email address if it hasn't been changed already without triggering email validation.
+ * Version: 1.0.0
  * Type: mu-plugin
  * Status: Complete
 */

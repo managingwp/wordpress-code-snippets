@@ -2,6 +2,7 @@
 /**
  * woocommerce-order-search-in-admin-bar.php
  * Description: Add shop order search in the admin bar
+ * Version: 1.0.0
  * Type: Snippet
  * Status: Complete
  *

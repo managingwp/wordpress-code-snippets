@@ -2,6 +2,7 @@
 /**
  * wp-maintenance-mode2.php
  * Description: This plugin displays a maintenance message for non-administrative users.
+ * Version: 1.0.0
  * Status: Complete
  */
 

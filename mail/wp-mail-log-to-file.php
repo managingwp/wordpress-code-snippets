@@ -2,6 +2,7 @@
 /**
  * wp-mail-log-to-file.php
  * Description: Log wp_mail function to a file
+ * Version: 1.0.0
  * Status: Complete
  *
  * Place into wp-content/mu-plugins directory and log the wp_mail function and data

@@ -2,6 +2,7 @@
 /**
  * Plugin Name: Failover Status Monitor
  * Description: Monitors failover status and provides notifications.
+ * Version: 1.0.0
  * Status: Complete
 */
 

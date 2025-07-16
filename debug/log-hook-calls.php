@@ -2,6 +2,7 @@
 /**
  * log-hook-calls.php
  * Description: Log all hook calls to a file
+ * Version: 1.0.0
  * Status: Complete
  *
  * Place into wp-content/mu-plugins directory and log all hook calls

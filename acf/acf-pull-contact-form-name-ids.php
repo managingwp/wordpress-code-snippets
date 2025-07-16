@@ -1,7 +1,8 @@
 <?
 /**
- * acf-pull-contact-form-name-ids.php
+ * Plugin Name: ACF Pull Contact Form Name IDs into Select Field
  * Description: Pull Contact Form 6 form name and ID's into a select field called form_id dynamically.
+ * Version: 1.0.0
  * Type: snippet
  * Status: Complete
  **/

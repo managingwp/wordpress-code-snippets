@@ -2,6 +2,7 @@
 /**
  * nginx-helper-purge-schedule.php
  * Description: Purge NGINX cache when a scheduled post is published
+ * Version: 1.0.0
  * Type: snippet
  * Status: Complete
  */

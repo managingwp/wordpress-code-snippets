@@ -2,6 +2,7 @@
 /**
  * betteruptime-heartbeat.php
  * Description: Monitor WordPress cron via Better Uptime heartbeat checks. Originally from https://www.sprucely.net/knowledge-base/monitoring-wordpress-cron-via-heartbeat-checks/
+ * Version: 1.0.0
  * Status: Complete
  * 
  * Add define( 'BETTERUPTIME_CRON_MONITOR_KEY', 'SXuNXxHWREsstjnXrBMhNx3B' ); to wp-config.php

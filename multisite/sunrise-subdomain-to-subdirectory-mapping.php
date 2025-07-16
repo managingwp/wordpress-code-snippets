@@ -2,7 +2,7 @@
 /**
  * sunrise-subdomain-to-subdirectory-mapping.php
  * Description: Redirect domain names to multisite subdirectories and include query arguments in the redirect.
- * Status: Complete
+ * Version: 1.0.0
  * Status: Complete
  * 
  * You must have the domain name setup on your hosting account, typically as a addon domain or domain alias.

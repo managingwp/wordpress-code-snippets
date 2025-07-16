@@ -1,7 +1,8 @@
 <?php
 /**
- * mu-dashboard-shortcode.php
- * Description: Unsure what the usage of this snippet is.
+ * Plugin Name: Menu Shortcode
+ * Description: Adds a shortcode to output the dashboard link.
+ * Version: 1.0.0
  * Type: snippet
  * Status: WIP
  */

@@ -2,6 +2,7 @@
 /**
  * staging-environment.php
  * Description: This snippet will enable and disable plugins based on the WP_ENVIRONMENT_TYPE 
+ * Version: 1.0.0
  * Type: Snippet
  * Status: Complete
  * 

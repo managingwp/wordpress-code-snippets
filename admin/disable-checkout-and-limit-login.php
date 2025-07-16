@@ -2,6 +2,7 @@
 /**
  * Plugin Name: Disable WooCommerce Checkout & Restrict Logins to Admins
  * Description: Disables WooCommerce checkout and blocks login for all users except administrators.
+ * Version: 1.0.0
  * Type: mu-plugin
  * Status: Complete
 */

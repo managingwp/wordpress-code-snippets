@@ -1,4 +1,10 @@
 # Changelog
+## Release 1.4.2
+* improvement: Updated generate-readme.sh to check for missing fields
+* Require version to be a field
+* Added plugin powerkit-svg-lazyload-fix.php
+
+
 ## Release 1.4.1
 * Updated disable-checkout-and-limit-login.php to be disabled via define('WP_MAINTENANCE_MODE', true);
 

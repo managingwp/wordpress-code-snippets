@@ -2,6 +2,7 @@
 /**
  * disable-plugin-updates.php
  * Description: Remove plugin update notices
+ * Version: 1.0.0
  * Type: snippet
  * Status: Complete
  **/

@@ -2,6 +2,7 @@
 /**
  * test-open-tcp-ports.php
  * Description: Original created to test if ports are open outbound on hosting providers to be able to send tranational email
+ * Version: 1.0.0
  * Status: Complete
  */
 function testPorts($host, $ports, $timeout) {

@@ -1,7 +1,8 @@
 <?php
 /**
- * log-admin-notices.php
+ * Plugin Name: Log Admin Notices
  * Description: Log's admin notices on admin_init, great for finding admin_notices to hide.
+ * Version: 1.0.0
  * Type: snippet
  * Status: Complete
 */
