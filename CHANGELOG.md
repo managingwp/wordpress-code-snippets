@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.4.3
+* Added wp-admin-login-message.php for adding messages to the WordPress admin login page.
+
+
 ## Release 1.4.2
 * improvement: Updated generate-readme.sh to check for missing fields
 * Require version to be a field

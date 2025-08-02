@@ -13,6 +13,7 @@
 | [Disable WooCommerce Checkout & Restrict Logins to Admins](./admin/disable-checkout-and-limit-login.php) | 1.0.0 | mu-plugin | :white_check_mark: | Disables WooCommerce checkout and blocks login for all users except administrators. |
 | [Log Admin Notices](./admin/log-admin-notices.php) | 1.0.0 | snippet | :white_check_mark: | Log's admin notices on admin_init, great for finding admin_notices to hide. |
 | [Menu Shortcode](./admin/mu-dashboard-shortcode.php) | 1.0.0 | snippet | :construction: | Adds a shortcode to output the dashboard link. |
+| [wp-admin-login-message.php](./admin/wp-admin-login-message.php) | Unknown | Plugin | :question: | No description |
 
 ## [ajaxlog](ajaxlog)
 
