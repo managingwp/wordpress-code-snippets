@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.4.4
+* Added disable-wp-rocket-preload.php
+
+
 ## Release 1.4.3
 * Added wp-admin-login-message.php for adding messages to the WordPress admin login page.
 

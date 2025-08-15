@@ -27,7 +27,7 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Disable WooCommerce Checkout & Restrict Logins to Admins](./admin/disable-checkout-and-limit-login.php) | 1.0.0 | mu-plugin | :white_check_mark: | Disables WooCommerce checkout and blocks login for all users except administrators. |
 | [Log Admin Notices](./admin/log-admin-notices.php) | 1.0.0 | snippet | :white_check_mark: | Log's admin notices on admin_init, great for finding admin_notices to hide. |
 | [Menu Shortcode](./admin/mu-dashboard-shortcode.php) | 1.0.0 | snippet | :construction: | Adds a shortcode to output the dashboard link. |
-| [wp-admin-login-message.php](./admin/wp-admin-login-message.php) | Unknown | Plugin | :question: | No description |
+| [WP Admin Login Message](./admin/wp-admin-login-message.php) | 1.0.0 | mu-plugin | :white_check_mark: | Places a message on the WordPress Admin login page. |
 
 ## [ajaxlog](ajaxlog)
 
@@ -48,6 +48,7 @@ The status field is used to indicate the current status of the snippet. This is 
 | [disable-lscache-notice.php](./caching/disable-lscache-notice.php) | 1.0.0 | snippet | :construction: | Disables the admin notice Litespeeds LSCache generates about conflicting plugins installed |
 | [disable-plugin-updates.php](./caching/disable-plugin-updates.php) | 1.0.0 | snippet | :white_check_mark: | Remove plugin update notices |
 | [Disable WP Rocket Cache when Litespeed Cache is enabled.](./caching/disable-wp-rocket-lscache.php) |                 echo 'LiteSpeed Cache is active, version: ' . LSCWP_V; | mu-plugin | :white_check_mark: | This plugin disables WP Rocket cache when Litespeed Cache is enabled. It checks if Litespeed Cache is active and if so, it disables WP Rocket cache. |
+| [Disable WP Rocket Cache Preload](./caching/disable-wp-rocket-preload.php) | 0.1.0 | mu-plugin | :white_check_mark: | This plugin disables WP Rocket cache preload functionality on a WordPress site. |
 | [nginx-gravity-forms-stripe-cache-exclude.php](./caching/nginx-gravity-forms-stripe-cache-exclude.php) | 1.0.0 | snippet | :white_check_mark: | Exclude Gravity Forms or Stripe from caching |
 | [nginx-helper-purge-schedule.php](./caching/nginx-helper-purge-schedule.php) | 1.0.0 | snippet | :white_check_mark: | Purge NGINX cache when a scheduled post is published |
 
@@ -84,8 +85,8 @@ The status field is used to indicate the current status of the snippet. This is 
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
-| [wp-maintenance-mode.php](./maintenance/wp-maintenance-mode.php) | 1.0.0 | Plugin | :white_check_mark: | Maintenance mode for WordPress - Originally from https://wordpress.stackexchange.com/questions/398037/maintenance-mode-excluding-site-administrators |
 | [wp-maintenance-mode2.php](./maintenance/wp-maintenance-mode2.php) | 1.0.0 | Plugin | :white_check_mark: | This plugin displays a maintenance message for non-administrative users. |
+| [wp-maintenance-mode.php](./maintenance/wp-maintenance-mode.php) | 1.0.0 | Plugin | :white_check_mark: | Maintenance mode for WordPress - Originally from https://wordpress.stackexchange.com/questions/398037/maintenance-mode-excluding-site-administrators |
 
 ## [monitoring](monitoring)
 
@@ -141,6 +142,10 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | 1.0.0 | Plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Release 1.4.4
+* Added disable-wp-rocket-preload.php
+
+
 ## Release 1.4.3
 * Added wp-admin-login-message.php for adding messages to the WordPress admin login page.
 
