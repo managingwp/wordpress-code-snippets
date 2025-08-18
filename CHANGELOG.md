@@ -1,4 +1,11 @@
 # Changelog
+## mend
+
+
+## Release 1.4.5
+* Added block-http-requests.php
+
+
 ## Release 1.4.4
 * Added disable-wp-rocket-preload.php
 

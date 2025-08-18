@@ -56,6 +56,7 @@ The status field is used to indicate the current status of the snippet. This is 
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
+| [Block HTTP Requests to a list of URLs](./core/block-http-requests.php) | 0.1.0 | * Type: snippet | :white_check_mark: | This plugin blocks HTTP requests to specific URLs, such as the WP Ultimo update server. |
 | [enable-core-updates-version-control.php](./core/enable-core-updates-version-control.php) | 1.0.0 | Plugin | :white_check_mark: | Filters whether the automatic updater should consider a filesystem location to be potentially managed by a version control system. |
 
 ## [debug](debug)
@@ -142,6 +143,13 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | 1.0.0 | Plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## mend
+
+
+## Release 1.4.5
+* Added block-http-requests.php
+
+
 ## Release 1.4.4
 * Added disable-wp-rocket-preload.php
 
