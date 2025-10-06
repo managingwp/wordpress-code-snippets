@@ -105,6 +105,7 @@ The status field is used to indicate the current status of the snippet. This is 
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
+| [Podcast Download Canonical Guard](./plugins/podcast.php) | 0.1.0 |             header('Content-Type: text/plain; charset=utf-8'); | :white_check_mark: | Prevents Seriously Simple Podcasting plugin redirect loops on missing podcast download URLs by disabling canonical redirects for 404 responses on /podcast-download/ paths. |
 | [Plugin Name: PowerKit SVG Lazyload Fix](./plugins/powerkit-svg-lazyload-fix.php) | 1.0.0 | mu-plugin | :white_check_mark: | This script has two objectives, replace redirection_items and update |
 | [redirection-search-replace.php](./plugins/redirection-search-replace.php) | 1.0.0 | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
 | [Plugin Name: Simple Membership Members Per Page](./plugins/simple-membership-members-per-page.php) | Version: 1.0 | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
@@ -143,7 +144,8 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | 1.0.0 | Plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
-## mend
+## Relase 1.4.6
+* Added plugins/podcasts.php
 
 
 ## Release 1.4.5

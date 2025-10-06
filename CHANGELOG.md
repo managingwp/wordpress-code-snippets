@@ -1,5 +1,6 @@
 # Changelog
-## mend
+## Relase 1.4.6
+* Added plugins/podcasts.php
 
 
 ## Release 1.4.5
