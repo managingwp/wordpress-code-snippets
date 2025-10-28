@@ -1,10 +1,10 @@
 <?php
 /** 
- * show-browser-cookies.php
+ * Plugin Name: show-browser-cookies.php
  * Description Shows your browsers cookies
  * Version: 1.0.0
  * Type: snippet
- * Status: Complete
+ * Status: Complete 
  */
 
 add_action( 'admin_menu', function () {

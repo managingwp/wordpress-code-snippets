@@ -1,9 +1,10 @@
 <?php
 /**
- * wp-maintenance-mode.php
+ * Plugin Name: wp-maintenance-mode.php
  * Description: Maintenance mode for WordPress - Originally from https://wordpress.stackexchange.com/questions/398037/maintenance-mode-excluding-site-administrators
  * Version: 1.0.0
  * Status: Complete
+ * Type: mu-plugin
  */
 
 function wp_maintenance_mode() {

@@ -5,6 +5,7 @@
  * Version: 1.0
  * Author: Your Name
  * Status: Complete
+ * Type: snippet
 */
 
 // Add a menu item under Tools

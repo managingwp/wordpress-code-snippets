@@ -4,6 +4,7 @@
  * Description: Monitors failover status and provides notifications.
  * Version: 1.0.0
  * Status: Complete
+ * Type: mu-plugin
 */
 
 // Prevent direct access

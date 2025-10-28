@@ -1,6 +1,6 @@
 <?php
 /** 
- * post-title-permalink.php
+ * Plugin Name: post-title-permalink.php
  * Description: This code will add a link to the title of the post, so that the title is clickable.
  * Version: 1.0.0
  * Type: Snippet

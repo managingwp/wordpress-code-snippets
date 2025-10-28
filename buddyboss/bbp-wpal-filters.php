@@ -11,6 +11,7 @@
  * Requires at least: 5.0
  * Requires PHP: 7.0
  * Status: Complete
+ * Type: mu-plugin
 */
 
 if (! defined('ABSPATH') ) {

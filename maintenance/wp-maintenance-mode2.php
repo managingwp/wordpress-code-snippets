@@ -1,9 +1,10 @@
 <?php
 /**
- * wp-maintenance-mode2.php
+ * Plugin Name: wp-maintenance-mode2.php
  * Description: This plugin displays a maintenance message for non-administrative users.
  * Version: 1.0.0
  * Status: Complete
+ * Type: mu-plugin
  */
 
 function maintenance_mode_for_non_admins() {

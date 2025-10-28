@@ -7,6 +7,7 @@
  * Author URI: https://lmt.ca
  * License: GPL2
  * Status: Complete
+ * Type: snippet
  */
 #wu_custom_domain_after
 function custom_domain_text () {  

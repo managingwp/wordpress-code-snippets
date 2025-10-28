@@ -1,9 +1,10 @@
 <?php
 /**
- * sunrise-subdomain-to-subdirectory-mapping.php
+ * Plugin Name: sunrise-subdomain-to-subdirectory-mapping.php
  * Description: Redirect domain names to multisite subdirectories and include query arguments in the redirect.
  * Version: 1.0.0
  * Status: Complete
+ * Type: mu-plugin
  * 
  * You must have the domain name setup on your hosting account, typically as a addon domain or domain alias.
  */

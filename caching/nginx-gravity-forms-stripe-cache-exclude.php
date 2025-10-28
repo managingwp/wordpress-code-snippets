@@ -1,6 +1,6 @@
 <?php
 /**
- * nginx-gravity-forms-stripe-cache-exclude.php
+ * Plugin Name: nginx-gravity-forms-stripe-cache-exclude.php
  * Description: Exclude Gravity Forms or Stripe from caching
  * Version: 1.0.0
  * Type: snippet

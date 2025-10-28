@@ -1,6 +1,6 @@
 <?php
 /**
- * woocommerce-wc_product_loop_transient-expiration-to-1-day.php
+ * Plugin Name: woocommerce-wc_product_loop_transient-expiration-to-1-day.php
  * Description: Change wc_product_loop transient expiration to 1 day
  * Version: 1.0.0
  * Type: snippet

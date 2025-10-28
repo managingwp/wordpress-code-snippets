@@ -1,6 +1,6 @@
 <?php 
 /**
- * woo-commerce-hide-costofgoodssold-metadata.php
+ * Plugin Name: woo-commerce-hide-costofgoodssold-metadata.php
  * Description: Hides item metadata for the WooCommerce Costs of Goods Sold on specific Booster for WooCommerce plugin shortcodes
  * Version: 1.0.0
  * Type: snippet

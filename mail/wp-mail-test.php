@@ -1,9 +1,10 @@
 <?php
 /**
- * wp-mail-test.php
+ * Plugin Name: wp-mail-test.php
  * Description: Used to send a test email to test the wp_mail function.
  * Version: 1.0.0
  * Status: Complete
+ * Type: mu-plugin
  * 
  * Visit the media upload section to trigger the email.
  */

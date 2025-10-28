@@ -6,6 +6,7 @@
  * Plugin URI: https://managingwp.io
  * Version: 1.0.0
  * Status: Complete
+ * Type: mu-plugin
 **/
 
 /**

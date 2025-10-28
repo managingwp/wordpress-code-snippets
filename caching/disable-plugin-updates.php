@@ -1,6 +1,6 @@
 <?php
 /**
- * disable-plugin-updates.php
+ * Plugin Name: disable-plugin-updates.php
  * Description: Remove plugin update notices
  * Version: 1.0.0
  * Type: snippet

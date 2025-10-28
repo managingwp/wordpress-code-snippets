@@ -1,6 +1,6 @@
 <?php
 /**
- * redirection-search-replace.php
+ * Plugin Name: redirection-search-replace.php
  * Description: This script has two objectives, replace redirection_items and update
  * Version: 1.0.0
  * Type: script
