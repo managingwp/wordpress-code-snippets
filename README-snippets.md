@@ -21,6 +21,12 @@
 | ----- | ------- | ---- | ------ | ----------- |
 | [Ajax Logger](./ajaxlog/ajaxlog.php) | 1.0.0 | mu-plugin | :white_check_mark: | Record all admin_init requests to troubleshoot high admin-ajax.php requests. |
 
+## [blocks](blocks)
+
+| Title | Version | Type | Status | Description |
+| ----- | ------- | ---- | ------ | ----------- |
+| [Email Subscribe Block](./blocks/email-subscribe-redirect-block.php) | 1.0 |                                     type: 'email',  | :question: | A simple form that redirects with email query param. |
+
 ## [buddyboss](buddyboss)
 
 | Title | Version | Type | Status | Description |

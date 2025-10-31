@@ -1,4 +1,13 @@
 # Changelog
+## Added email-subcribe-redirect-block.php
+
+
+## Relase 1.4.7
+* * Added AGENTS.md
+* * Updated multiple plugins without plugin name or type
+* * added general/qr-code-page-link.php
+
+
 ## Relase 1.4.6
 * Added plugins/podcasts.php
 

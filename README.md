@@ -35,6 +35,12 @@ The status field is used to indicate the current status of the snippet. This is 
 | ----- | ------- | ---- | ------ | ----------- |
 | [Ajax Logger](./ajaxlog/ajaxlog.php) | 1.0.0 | mu-plugin | :white_check_mark: | Record all admin_init requests to troubleshoot high admin-ajax.php requests. |
 
+## [blocks](blocks)
+
+| Title | Version | Type | Status | Description |
+| ----- | ------- | ---- | ------ | ----------- |
+| [Email Subscribe Block](./blocks/email-subscribe-redirect-block.php) | 1.0 |                                     type: 'email',  | :question: | A simple form that redirects with email query param. |
+
 ## [buddyboss](buddyboss)
 
 | Title | Version | Type | Status | Description |
@@ -150,6 +156,15 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | 1.0.0 | mu-plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Added email-subcribe-redirect-block.php
+
+
+## Relase 1.4.7
+* * Added AGENTS.md
+* * Updated multiple plugins without plugin name or type
+* * added general/qr-code-page-link.php
+
+
 ## Relase 1.4.6
 * Added plugins/podcasts.php
 
