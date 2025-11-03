@@ -3,7 +3,8 @@
  * Plugin Name: Email Subscribe Block
  * Description: A simple form that redirects with email query param.
  * Version: 1.0
- * Author: Your Name
+ * Author: Managing WP
+ * Status: Complete
  */
 
 // Exit if accessed directly

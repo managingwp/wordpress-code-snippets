@@ -25,7 +25,8 @@
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
-| [Email Subscribe Block](./blocks/email-subscribe-redirect-block.php) | 1.0 |                                     type: 'email',  | :question: | A simple form that redirects with email query param. |
+| [Email Subscribe Block](./blocks/email-subscribe-redirect-block.php) | 1.0 |                                     type: 'email',  | :white_check_mark: | A simple form that redirects with email query param. |
+| [Footer Navigation Block](./blocks/footer-navigation.php) | 1.0.0 |                         type: 'string', | :white_check_mark: | A block that renders a WordPress menu as an unordered list. |
 
 ## [buddyboss](buddyboss)
 
