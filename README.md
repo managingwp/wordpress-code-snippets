@@ -156,7 +156,12 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | 1.0.0 | mu-plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
-## Added email-subcribe-redirect-block.php
+## Release 1.4.9
+* Updated email-subscribe-redirect-block.php to add submit button hover text color.
+
+
+## Release 1.4.8
+* Added email-subcribe-redirect-block.php
 
 
 ## Relase 1.4.7

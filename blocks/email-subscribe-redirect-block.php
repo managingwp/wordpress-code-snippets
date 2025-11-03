@@ -62,6 +62,14 @@ add_action('init', function() {
                 'type' => 'string',
                 'default' => '#d0d0d0',
             ),
+            'buttonTextColor' => array(
+                'type' => 'string',
+                'default' => '#333333',
+            ),
+            'buttonTextColorHover' => array(
+                'type' => 'string',
+                'default' => '#000000',
+            ),
         ),
         'editor_script' => 'email-redirect-block-editor',
         'render_callback' => 'render_email_redirect_block',
@@ -85,6 +93,8 @@ function render_email_redirect_block($attributes, $content) {
     $button_border_radius = isset($attributes['buttonBorderRadius']) ? esc_attr($attributes['buttonBorderRadius']) : '4px';
     $button_bg_color = isset($attributes['buttonBackgroundColor']) ? esc_attr($attributes['buttonBackgroundColor']) : '#e0e0e0';
     $button_bg_color_hover = isset($attributes['buttonBackgroundColorHover']) ? esc_attr($attributes['buttonBackgroundColorHover']) : '#d0d0d0';
+    $button_text_color = isset($attributes['buttonTextColor']) ? esc_attr($attributes['buttonTextColor']) : '#333333';
+    $button_text_color_hover = isset($attributes['buttonTextColorHover']) ? esc_attr($attributes['buttonTextColorHover']) : '#000000';
     
     // Generate unique class for this button instance
     $button_unique_class = 'btn-' . uniqid();
@@ -95,10 +105,12 @@ function render_email_redirect_block($attributes, $content) {
             border: <?php echo $button_border_width; ?> solid <?php echo $button_border_color; ?>;
             border-radius: <?php echo $button_border_radius; ?>;
             background-color: <?php echo $button_bg_color; ?>;
-            transition: background-color 0.3s ease;
+            color: <?php echo $button_text_color; ?>;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .<?php echo $button_unique_class; ?>:hover {
             background-color: <?php echo $button_bg_color_hover; ?>;
+            color: <?php echo $button_text_color_hover; ?>;
         }
 
         /* --- Responsive stacking --- */
@@ -209,11 +221,19 @@ add_action('enqueue_block_editor_assets', function() {
                     buttonBackgroundColorHover: {
                         type: 'string',
                         default: '#d0d0d0'
+                    },
+                    buttonTextColor: {
+                        type: 'string',
+                        default: '#333333'
+                    },
+                    buttonTextColorHover: {
+                        type: 'string',
+                        default: '#000000'
                     }
                 },
                 edit: function(props) {
                     const { attributes, setAttributes } = props;
-                    const { formClass, buttonClass, inputPlaceholder, redirectUrl, buttonBorderWidth, buttonBorderColor, buttonBorderRadius, buttonBackgroundColor, buttonBackgroundColorHover } = attributes;
+                    const { formClass, buttonClass, inputPlaceholder, redirectUrl, buttonBorderWidth, buttonBorderColor, buttonBorderRadius, buttonBackgroundColor, buttonBackgroundColorHover, buttonTextColor, buttonTextColorHover } = attributes;
                     
                     const blockProps = useBlockProps();
                     
@@ -289,6 +309,30 @@ add_action('enqueue_block_editor_assets', function() {
                                             help: 'Hex color code (e.g., #d0d0d0)'
                                         })
                                     )
+                                ),
+                                el(PanelRow, {},
+                                    el('div', { style: { width: '100%' } },
+                                        el('label', { style: { display: 'block', marginBottom: '8px', fontWeight: '600' } }, 'Text Color'),
+                                        el(TextControl, {
+                                            value: buttonTextColor,
+                                            onChange: function(value) {
+                                                setAttributes({ buttonTextColor: value });
+                                            },
+                                            help: 'Hex color code (e.g., #333333)'
+                                        })
+                                    )
+                                ),
+                                el(PanelRow, {},
+                                    el('div', { style: { width: '100%' } },
+                                        el('label', { style: { display: 'block', marginBottom: '8px', fontWeight: '600' } }, 'Text Color (Hover)'),
+                                        el(TextControl, {
+                                            value: buttonTextColorHover,
+                                            onChange: function(value) {
+                                                setAttributes({ buttonTextColorHover: value });
+                                            },
+                                            help: 'Hex color code (e.g., #000000)'
+                                        })
+                                    )
                                 )
                             ),
                             el(PanelBody, { title: 'CSS Classes', initialOpen: false },
@@ -337,7 +381,7 @@ add_action('enqueue_block_editor_assets', function() {
                                     disabled: true,
                                     style: { 
                                         padding: '8px 16px', 
-                                        color: '#333', 
+                                        color: buttonTextColor, 
                                         backgroundColor: buttonBackgroundColor,
                                         border: buttonBorderWidth + ' solid ' + buttonBorderColor,
                                         borderRadius: buttonBorderRadius,
