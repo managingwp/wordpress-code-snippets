@@ -87,6 +87,7 @@ The status field is used to indicate the current status of the snippet. This is 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
 | [MU Shortcode: SVG QR for Current URL](./general/qr-code-page-link.php) | 1.0.0 | Snippet | :white_check_mark: | Adds [qr_svg] shortcode that renders an SVG QR code for the current page URL (or a provided URL). |
+| [Updated Content Report](./general/updated-content.php) | 1.0.0 | mu-plugin | :white_check_mark: | Shows all posts by post type, sorted by last updated date for easy content migration tracking. |
 
 ## [mail](mail)
 
@@ -157,6 +158,10 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | 1.0.0 | mu-plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Release 1.4.10
+* * Created blocks footer-navigation.php
+
+
 ## Release 1.4.9
 * Updated email-subscribe-redirect-block.php to add submit button hover text color.
 

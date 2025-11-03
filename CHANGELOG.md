@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.4.10
+* * Created blocks footer-navigation.php
+
+
 ## Release 1.4.9
 * Updated email-subscribe-redirect-block.php to add submit button hover text color.
 
