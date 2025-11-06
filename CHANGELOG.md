@@ -1,4 +1,11 @@
 # Changelog
+## Release 1.4.12
+
+
+## Release 1.4.11
+* Added updated-content.php snippet
+
+
 ## Release 1.4.10
 * * Created blocks footer-navigation.php
 

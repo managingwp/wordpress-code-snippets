@@ -65,14 +65,24 @@ function wprl_log_redirect( $location, $status ) {
         $caller_info = wp_basename( $caller['file'] ) . ':' . ( $caller['line'] ?? 0 );
     }
 
+    // Grab siteurl and home from options
+    $siteurl = get_option( 'siteurl' );
+    $home    = get_option( 'home' );
+
     $msg = sprintf(
-        "[WP-REDIRECT] %s → %s (status %d) called by %s",
+        "[WP-REDIRECT] %s → %s (status %d) called by %s | siteurl=%s | home=%s",
         $_SERVER['REQUEST_URI'] ?? 'unknown',
         $location,
         $status,
-        $caller_info
+        $caller_info,
+        $siteurl,
+        $home
     );
     wprl_write_log( $msg );
+
+    // Also emit a short backtrace to the PHP error log for deeper debugging
+    error_log( '[WP-REDIRECT TRACE] ' . ( $_SERVER['REQUEST_URI'] ?? 'unknown' ) . ' → ' . $location );
+    error_log( print_r( debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 10 ), true ) );
 
     return $location;
 }
@@ -85,12 +95,22 @@ function wprl_log_redirect( $location, $status ) {
  */
 function wprl_log_raw_header( $headers ) {
     if ( ! empty( $headers['Location'] ) ) {
+        // Grab siteurl and home from options
+        $siteurl = get_option( 'siteurl' );
+        $home    = get_option( 'home' );
+
         $msg = sprintf(
-            "[WP-HEADER] sending Location: %s (on %s)",
+            "[WP-HEADER] sending Location: %s (on %s) | siteurl=%s | home=%s",
             $headers['Location'],
-            $_SERVER['REQUEST_URI'] ?? 'unknown'
+            $_SERVER['REQUEST_URI'] ?? 'unknown',
+            $siteurl,
+            $home
         );
         wprl_write_log( $msg );
+
+        // Also emit a short backtrace to the PHP error log for deeper debugging
+        error_log( '[WP-HEADER TRACE] ' . ( $_SERVER['REQUEST_URI'] ?? 'unknown' ) . ' → ' . $headers['Location'] );
+        error_log( print_r( debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 10 ), true ) );
     }
     return $headers;
 }

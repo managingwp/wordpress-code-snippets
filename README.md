@@ -158,6 +158,13 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | 1.0.0 | mu-plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Release 1.4.12
+
+
+## Release 1.4.11
+* Added updated-content.php snippet
+
+
 ## Release 1.4.10
 * * Created blocks footer-navigation.php
 
