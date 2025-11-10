@@ -1,5 +1,10 @@
 # Changelog
+## Release 1.4.13
+* Added plugins/gravityforms-text-notifications.php
+
+
 ## Release 1.4.12
+* Updated wp-redirect-log.php to include siteurl and home as well as backtrace.
 
 
 ## Release 1.4.11
