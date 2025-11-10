@@ -105,6 +105,7 @@
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
+| [Gravity Forms Notifications as Text not HTML](./plugins/gravityforms-text-notifications.php) | 0.1.0 | snippet | :white_check_mark: | All notifications will be sent as text versus the default html. |
 | [Podcast Download Canonical Guard](./plugins/podcast.php) | 0.1.0 |             header('Content-Type: text/plain; charset=utf-8'); | :white_check_mark: | Prevents Seriously Simple Podcasting plugin redirect loops on missing podcast download URLs by disabling canonical redirects for 404 responses on /podcast-download/ paths. |
 | [Plugin Name: PowerKit SVG Lazyload Fix](./plugins/powerkit-svg-lazyload-fix.php) | 1.0.0 | mu-plugin | :white_check_mark: | This script has two objectives, replace redirection_items and update |
 | [redirection-search-replace.php](./plugins/redirection-search-replace.php) | 1.0.0 | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
