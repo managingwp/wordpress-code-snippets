@@ -148,6 +148,7 @@ The status field is used to indicate the current status of the snippet. This is 
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
+| [WooCommerce Subscription Gateway ID Column](./woocommerce/woocommerce-gateway-id-column.php) | 1.0.0 | mu-plugin | :white_check_mark: | Adds a Gateway ID column to the WooCommerce Subscriptions admin list showing the payment gateway for each subscription |
 | [woo-commerce-hide-costofgoodssold-metadata.php](./woocommerce/woocommerce-hide-costofgoodssold-metadata.php) | 1.0.0 | snippet | :white_check_mark: | Hides item metadata for the WooCommerce Costs of Goods Sold on specific Booster for WooCommerce plugin shortcodes |
 | [woocommerce-order-search-in-admin-bar.php](./woocommerce/woocommerce-order-search-in-admin-bar.php) | 1.0.0 | Snippet | :white_check_mark: | Add shop order search in the admin bar |
 | [woocommerce-wc_product_loop_transient-expiration-to-1-day.php](./woocommerce/woocommerce-wc_product_loop_transient-expiration-to-1-day.php) | 1.0.0 | snippet | :white_check_mark: | Change wc_product_loop transient expiration to 1 day |
@@ -159,6 +160,10 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | 1.0.0 | mu-plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Release 1.4.14
+* Added woocommerce/woocommerce-gateway-id-column.php
+
+
 ## Release 1.4.13
 * Added plugins/gravityforms-text-notifications.php
 
