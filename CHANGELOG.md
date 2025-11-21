@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.4.14
+* Added woocommerce/woocommerce-gateway-id-column.php
+
+
 ## Release 1.4.13
 * Added plugins/gravityforms-text-notifications.php
 
