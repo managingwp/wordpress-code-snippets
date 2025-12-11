@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.4.15
+* * Fixed error in wp-failover.php where $_SERVER['SERVER_ADDR'] is undefined via wp-cli
+
+
 ## Release 1.4.14
 * Added woocommerce/woocommerce-gateway-id-column.php
 

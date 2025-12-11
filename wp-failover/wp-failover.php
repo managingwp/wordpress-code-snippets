@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Failover Status Monitor
  * Description: Monitors failover status and provides notifications.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Status: Complete
  * Type: mu-plugin
 */
@@ -287,7 +287,7 @@ function wpfailover_settings_section_callback() {
  * return void
  */
 function wpfailover_notification() {
-    $current_ip = $_SERVER['SERVER_ADDR'];
+    $current_ip = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
     $primary_failover_ip = get_option('wpfailover_primary_failover_ip');
     $admin_bar_color = get_option('admin_bar_color', '#9a6400'); // Default to #9a6400 if not set
 
@@ -336,7 +336,7 @@ function wpfailover_notification() {
         if (get_option('wpfailover_enable_banner')) {
             // Display "Failover ACTIVE" as an admin notice
             function wpfailover_display_admin_notice() {
-                $current_ip = $_SERVER['SERVER_ADDR'];
+                $current_ip = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
                 // Get the URL of the failover status page
                 $failover_page_url = admin_url('admin.php?page=wpfailover-status');
                 $failover_server_name = ($current_ip === get_option('secondary_failover_ip')) 
@@ -366,7 +366,7 @@ function wpfailover_status_page() {
         opcache_reset();
     }
 
-    $current_ip = $_SERVER['SERVER_ADDR'];    
+    $current_ip = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';    
     $wpfailover_primary_failover_ip = get_option('wpfailover_primary_failover_ip');
     $is_failover_active = ($current_ip !== $wpfailover_primary_failover_ip);
     ?>
