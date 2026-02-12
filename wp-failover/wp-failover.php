@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Failover Status Monitor
  * Description: Monitors failover status and provides notifications.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Status: Complete
  * Type: mu-plugin
 */
@@ -254,8 +254,52 @@ function wpfailover_register_settings() {
     register_setting('wpfailover_failover_settings', 'wpfailover_nginx_access_log_filters');
     register_setting('wpfailover_failover_settings', 'wpfailover_filters_add_cloudflare');
     register_setting('wpfailover_failover_settings', 'wpfailover_cf_loadbalancing_logs_url');
+    register_setting('wpfailover_failover_settings', 'wpfailover_status_api_key');
 }
 add_action('admin_init', 'wpfailover_register_settings');
+
+/**
+ * 
+ * Register REST API status endpoint
+ * args none
+ * 
+ * return void
+ */
+function wpfailover_register_rest_status() {
+    register_rest_route('wpfailover/v1', '/status', [
+        'methods'             => 'GET',
+        'callback'            => 'wpfailover_rest_status_callback',
+        'permission_callback' => '__return_true',
+    ]);
+}
+add_action('rest_api_init', 'wpfailover_register_rest_status');
+
+/**
+ * 
+ * REST API status callback
+ * Returns 'primary' or 'secondary' as plain text if valid API key is provided
+ * 
+ * @param WP_REST_Request $request
+ * return WP_REST_Response
+ */
+function wpfailover_rest_status_callback($request) {
+    $provided_key = $request->get_param('key');
+    $stored_key   = get_option('wpfailover_status_api_key');
+
+    if (empty($stored_key) || empty($provided_key) || !hash_equals($stored_key, $provided_key)) {
+        $response = new WP_REST_Response('unauthorized', 403);
+        $response->header('Content-Type', 'text/plain');
+        return $response;
+    }
+
+    $current_ip   = $_SERVER['SERVER_ADDR'];
+    $primary_ip   = get_option('wpfailover_primary_failover_ip');
+    $status       = ($current_ip === $primary_ip) ? 'primary' : 'secondary';
+
+    $response = new WP_REST_Response($status, 200);
+    $response->header('Content-Type', 'text/plain');
+    return $response;
+}
 
 
 /**
@@ -447,6 +491,29 @@ function wpfailover_status_page() {
                 <tr valign="top">
                     <th scope="row">Add Cloudflare-Traffic-Manager and Cloudflare-Healthchecks to Nginx Access Log Filters</th>
                     <td><input type="checkbox" name="wpfailover_filters_add_cloudflare" value="1" <?php checked(get_option('wpfailover_filters_add_cloudflare'), 1); ?> /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row">Status API Key</th>
+                    <td>
+                        <input type="text" id="wpfailover_status_api_key" name="wpfailover_status_api_key" size="40" value="<?php echo esc_attr(get_option('wpfailover_status_api_key', '')); ?>" />
+                        <button type="button" class="button" onclick="document.getElementById('wpfailover_status_api_key').value = Array.from(crypto.getRandomValues(new Uint8Array(16))).map(b => b.toString(16).padStart(2, '0')).join('');">Generate Key</button>
+                        <?php if (get_option('wpfailover_status_api_key')) : ?>
+                        <p class="description">Status endpoint URL (click copy):</p>
+                        <input
+                            type="text"
+                            id="wpfailover_status_endpoint_url"
+                            value="<?php echo esc_url(rest_url('wpfailover/v1/status')) . '?key=' . esc_attr(get_option('wpfailover_status_api_key')); ?>"
+                            readonly
+                            size="90"
+                            onclick="this.select();"
+                        />
+                        <button type="button" class="button" onclick="wpfailoverCopyEndpointUrl()">Copy URL</button>
+                        <span id="wpfailover_copy_status" class="description" style="margin-left:8px;"></span>
+                        <?php else : ?>
+                        <p class="description">Generate or enter an API key, then save to enable the status endpoint.</p>
+                        <?php endif; ?>
+                    </td>
+                </tr>
             </table>
             <?php submit_button(); ?>
             <button type="button" onclick="location.reload();">Refresh</button>
@@ -482,6 +549,41 @@ function wpfailover_status_page() {
     jQuery(document).ready(function($) {
         $('.color-picker').wpColorPicker();
     });
+
+    function wpfailoverCopyEndpointUrl() {
+        var endpointInput = document.getElementById('wpfailover_status_endpoint_url');
+        var copyStatus = document.getElementById('wpfailover_copy_status');
+
+        if (!endpointInput) {
+            return;
+        }
+
+        endpointInput.select();
+        endpointInput.setSelectionRange(0, 99999);
+
+        var copied = false;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(endpointInput.value)
+                .then(function() {
+                    copied = true;
+                    if (copyStatus) {
+                        copyStatus.textContent = 'Copied';
+                    }
+                })
+                .catch(function() {
+                    copied = document.execCommand('copy');
+                    if (copyStatus) {
+                        copyStatus.textContent = copied ? 'Copied' : 'Copy failed';
+                    }
+                });
+            return;
+        }
+
+        copied = document.execCommand('copy');
+        if (copyStatus) {
+            copyStatus.textContent = copied ? 'Copied' : 'Copy failed';
+        }
+    }
     </script>
 
     <?php
