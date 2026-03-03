@@ -1,6 +1,12 @@
 # Changelog
+## Release 1.4.16
+* feat: created theme/generatepress-animations-sal.php
+
+
 ## Release 1.4.15
-* wp-failover: Added REST API status endpoint (`/wp-json/wpfailover/v1/status?key=KEY`) for external monitoring content checks
+* (6749b72) feat(wp-failover): Add REST API status endpoint for external monitoring
+* feat(wp-failover): add copyable status endpoint URL box
+
 
 ## Release 1.4.14
 * Added woocommerce/woocommerce-gateway-id-column.php
