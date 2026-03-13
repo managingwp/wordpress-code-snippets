@@ -1,4 +1,9 @@
 # Changelog
+## Release 1.4.17
+* (cb70b7a) (HEAD -> main, origin/main, origin/HEAD) improvement: Updated prayer-times.php to have a table view
+* (bcb5d2f) feat: Added shortcode/prayer-times.php
+
+
 ## Release 1.4.16
 * feat: created theme/generatepress-animations-sal.php
 

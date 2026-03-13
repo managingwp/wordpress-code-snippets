@@ -86,8 +86,8 @@
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
-| [wp-maintenance-mode2.php](./maintenance/wp-maintenance-mode2.php) | 1.0.0 | mu-plugin | :white_check_mark: | This plugin displays a maintenance message for non-administrative users. |
 | [wp-maintenance-mode.php](./maintenance/wp-maintenance-mode.php) | 1.0.0 | mu-plugin | :white_check_mark: | Maintenance mode for WordPress - Originally from https://wordpress.stackexchange.com/questions/398037/maintenance-mode-excluding-site-administrators |
+| [wp-maintenance-mode2.php](./maintenance/wp-maintenance-mode2.php) | 1.0.0 | mu-plugin | :white_check_mark: | This plugin displays a maintenance message for non-administrative users. |
 
 ## [monitoring](monitoring)
 
@@ -111,6 +111,12 @@
 | [redirection-search-replace.php](./plugins/redirection-search-replace.php) | 1.0.0 | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
 | [Plugin Name: Simple Membership Members Per Page](./plugins/simple-membership-members-per-page.php) | Version: 1.0 | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
 | [Ultimo Custom Domain Edits](./plugins/ultimo-custom-domain-edits.php) | 1.0 | snippet | :white_check_mark: | Custom Domain Edits for Ultimo |
+
+## [shortcodes](shortcodes)
+
+| Title | Version | Type | Status | Description |
+| ----- | ------- | ---- | ------ | ----------- |
+| [Prayer Times](./shortcodes/prayer-times.php) | 1.0.1 | mu-plugin  | :question: | Displays Islamic prayer times via the AlAdhan API. Use shortcode [prayer_times] anywhere on your site. |
 
 ## [tests](tests)
 
