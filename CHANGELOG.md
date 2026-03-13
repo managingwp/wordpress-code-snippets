@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.4.18
+* (5c4c45a) (HEAD -> main, origin/main, origin/HEAD) improvement: Updated wp-redirect-log.php to include trace data
+
+
 ## Release 1.4.17
 * (cb70b7a) (HEAD -> main, origin/main, origin/HEAD) improvement: Updated prayer-times.php to have a table view
 * (bcb5d2f) feat: Added shortcode/prayer-times.php

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Redirect Log
  * Description: Logs all wp_redirect and wp_safe_redirect calls to a log file in the uploads directory.
- * Version: 1.0
+ * Version: 1.0.1
  * Author: ManagingWP
  * Author URI: https://github.com/managingwp/wordpress-code-snippets
  * Type: mu-plugin
@@ -50,6 +50,45 @@ function wprl_write_log( $line ) {
 }
 
 /**
+ * Build readable backtrace frames for logging.
+ *
+ * @param int $limit
+ * @return array
+ */
+function wprl_get_backtrace_frames( $limit = 20 ) {
+    $frames  = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, $limit + 8 );
+    $summary = array();
+
+    foreach ( $frames as $frame ) {
+        $function = $frame['function'] ?? '';
+
+        // Skip this plugin's trace helper/log wrappers to surface the real redirect path.
+        if ( strpos( $function, 'wprl_' ) === 0 ) {
+            continue;
+        }
+
+        $file = isset( $frame['file'] ) ? wp_basename( $frame['file'] ) : '[internal]';
+        $line = isset( $frame['line'] ) ? (int) $frame['line'] : 0;
+
+        if ( ! empty( $frame['class'] ) ) {
+            $function = $frame['class'] . ( $frame['type'] ?? '::' ) . $function;
+        }
+
+        if ( $function === '' ) {
+            $function = '[main]';
+        }
+
+        $summary[] = sprintf( '%s:%d %s()', $file, $line, $function );
+
+        if ( count( $summary ) >= $limit ) {
+            break;
+        }
+    }
+
+    return $summary;
+}
+
+/**
  * Log wp_redirect / wp_safe_redirect usage
  *
  * @param string $location
@@ -57,32 +96,41 @@ function wprl_write_log( $line ) {
  * @return string
  */
 function wprl_log_redirect( $location, $status ) {
-    // short backtrace to find caller
-    $trace      = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 5 );
-    $caller     = isset( $trace[2] ) ? $trace[2] : $trace[1];
+    // Keep one caller for quick scanning and add full stack for deep debugging.
+    $trace      = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 10 );
+    $caller     = isset( $trace[2] ) ? $trace[2] : ( $trace[1] ?? array() );
     $caller_info = '';
     if ( ! empty( $caller['file'] ) ) {
         $caller_info = wp_basename( $caller['file'] ) . ':' . ( $caller['line'] ?? 0 );
     }
+    $backtrace = wprl_get_backtrace_frames( 20 );
 
     // Grab siteurl and home from options
     $siteurl = get_option( 'siteurl' );
     $home    = get_option( 'home' );
 
-    $msg = sprintf(
-        "[WP-REDIRECT] %s → %s (status %d) called by %s | siteurl=%s | home=%s",
-        $_SERVER['REQUEST_URI'] ?? 'unknown',
-        $location,
-        $status,
-        $caller_info,
-        $siteurl,
-        $home
+    $msg_lines = array(
+        '[WP-REDIRECT]',
+        'request: ' . ( $_SERVER['REQUEST_URI'] ?? 'unknown' ),
+        'location: ' . $location,
+        'status: ' . (int) $status,
+        'caller: ' . ( $caller_info ?: 'unknown' ),
+        'siteurl: ' . $siteurl,
+        'home: ' . $home,
+        'trace:',
     );
-    wprl_write_log( $msg );
 
-    // Also emit a short backtrace to the PHP error log for deeper debugging
-    error_log( '[WP-REDIRECT TRACE] ' . ( $_SERVER['REQUEST_URI'] ?? 'unknown' ) . ' → ' . $location );
-    error_log( print_r( debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 10 ), true ) );
+    if ( empty( $backtrace ) ) {
+        $msg_lines[] = '  01. n/a';
+    } else {
+        foreach ( $backtrace as $index => $frame ) {
+            $msg_lines[] = sprintf( '  %02d. %s', $index + 1, $frame );
+        }
+    }
+
+    $msg_lines[] = str_repeat( '-', 80 );
+    $msg = implode( PHP_EOL, $msg_lines );
+    wprl_write_log( $msg );
 
     return $location;
 }
@@ -95,22 +143,32 @@ function wprl_log_redirect( $location, $status ) {
  */
 function wprl_log_raw_header( $headers ) {
     if ( ! empty( $headers['Location'] ) ) {
+        $backtrace = wprl_get_backtrace_frames( 20 );
+
         // Grab siteurl and home from options
         $siteurl = get_option( 'siteurl' );
         $home    = get_option( 'home' );
 
-        $msg = sprintf(
-            "[WP-HEADER] sending Location: %s (on %s) | siteurl=%s | home=%s",
-            $headers['Location'],
-            $_SERVER['REQUEST_URI'] ?? 'unknown',
-            $siteurl,
-            $home
+        $msg_lines = array(
+            '[WP-HEADER]',
+            'request: ' . ( $_SERVER['REQUEST_URI'] ?? 'unknown' ),
+            'location: ' . $headers['Location'],
+            'siteurl: ' . $siteurl,
+            'home: ' . $home,
+            'trace:',
         );
-        wprl_write_log( $msg );
 
-        // Also emit a short backtrace to the PHP error log for deeper debugging
-        error_log( '[WP-HEADER TRACE] ' . ( $_SERVER['REQUEST_URI'] ?? 'unknown' ) . ' → ' . $headers['Location'] );
-        error_log( print_r( debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 10 ), true ) );
+        if ( empty( $backtrace ) ) {
+            $msg_lines[] = '  01. n/a';
+        } else {
+            foreach ( $backtrace as $index => $frame ) {
+                $msg_lines[] = sprintf( '  %02d. %s', $index + 1, $frame );
+            }
+        }
+
+        $msg_lines[] = str_repeat( '-', 80 );
+        $msg = implode( PHP_EOL, $msg_lines );
+        wprl_write_log( $msg );
     }
     return $headers;
 }

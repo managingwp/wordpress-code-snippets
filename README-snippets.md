@@ -60,7 +60,7 @@
 | [PHP Memory Info](./debug/php-memory.php) | 1.0 | mu-plugin | :white_check_mark: | Adds a Tools -> PHP Memory page to display PHP ini and WordPress memory settings and current usage. |
 | [show-browser-cookies.php](./debug/show-browser-cookies.php) | 1.0.0 | snippet | :question: |  * Description Shows your browsers cookies |
 | [Application Logs](./debug/show-logs-admin.php) | 1.0 | snippet | :white_check_mark: | Displays top 10 lines from a log file in the WordPress admin section. |
-| [WP Redirect Log](./debug/wp-redirect-log.php) | 1.0 | mu-plugin | :white_check_mark: | Logs all wp_redirect and wp_safe_redirect calls to a log file in the uploads directory. |
+| [WP Redirect Log](./debug/wp-redirect-log.php) | 1.0.1 | mu-plugin | :question: | Logs all wp_redirect and wp_safe_redirect calls to a log file in the uploads directory. |
 
 ## [development](development)
 
