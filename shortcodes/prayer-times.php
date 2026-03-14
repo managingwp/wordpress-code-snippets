@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Prayer Times
  * Description: Displays Islamic prayer times via the AlAdhan API. Use shortcode [prayer_times] anywhere on your site.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Status: complete
  * Type: mu-plugin 
  */
@@ -125,11 +125,39 @@ function pt_format_time( string $raw_time, string $format ): string {
  * to the ESI/tag-based purge hook that LiteSpeed Server itself listens to.
  */
 function pt_purge_litespeed_cache(): void {
-    // Method 1: LiteSpeed Cache plugin API (preferred — available when LSCWP is active).
+    // Method 1: LiteSpeed Cache plugin API (supports static and instance methods).
     if ( class_exists( '\\LiteSpeed\\Purge' ) ) {
-        \LiteSpeed\Purge::purge_url( home_url( '/' ) );
-        do_action( 'litespeed_purge_post', get_option( 'page_on_front' ) );
-        return;
+        try {
+            $did_purge = false;
+            $method    = new ReflectionMethod( '\\LiteSpeed\\Purge', 'purge_url' );
+
+            if ( $method->isStatic() ) {
+                \LiteSpeed\Purge::purge_url( home_url( '/' ) );
+                $did_purge = true;
+            } else {
+                $purger = null;
+
+                if ( method_exists( '\\LiteSpeed\\Purge', 'cls' ) ) {
+                    $purger = \LiteSpeed\Purge::cls();
+                } elseif ( method_exists( '\\LiteSpeed\\Purge', 'instance' ) ) {
+                    $purger = \LiteSpeed\Purge::instance();
+                } else {
+                    $purger = new \LiteSpeed\Purge();
+                }
+
+                if ( is_object( $purger ) && method_exists( $purger, 'purge_url' ) ) {
+                    $purger->purge_url( home_url( '/' ) );
+                    $did_purge = true;
+                }
+            }
+
+            if ( $did_purge ) {
+                do_action( 'litespeed_purge_post', get_option( 'page_on_front' ) );
+                return;
+            }
+        } catch ( Throwable $e ) {
+            // Fall through to action-based and HTTP PURGE fallbacks.
+        }
     }
 
     // Method 2: Trigger LSCWP purge action hooks (older LSCWP versions).
@@ -181,11 +209,11 @@ function pt_shortcode( $atts ): string {
 
     return $view === 'table'
         ? pt_render_table( $prayers, $timings, $date, $fmt, $s )
-        : pt_render_inline( $prayers, $timings, $fmt );
+        : pt_render_inline( $prayers, $timings, $fmt, $s );
 }
 
 // ── Inline view: Prayer times : Fajr - 4:28 AM  ||  Dhuhr - 1:23 PM … ─────────
-function pt_render_inline( array $prayers, array $timings, string $fmt ): string {
+function pt_render_inline( array $prayers, array $timings, string $fmt, array $s ): string {
     $segments = [];
     foreach ( $prayers as $key => $info ) {
         $time       = isset( $timings[ $key ] ) ? pt_format_time( $timings[ $key ], $fmt ) : '—';
@@ -194,6 +222,14 @@ function pt_render_inline( array $prayers, array $timings, string $fmt ): string
             esc_attr( strtolower( $key ) ),
             esc_html( $info['label'] ),
             esc_html( $time )
+        );
+    }
+
+    if ( ! empty( $s['show_jumuah'] ) && ! empty( $s['jumuah_time'] ) ) {
+        $segments[] = sprintf(
+            '<span class="pt-item pt-jummah"><span class="pt-name">%s</span> <span class="pt-dash">-</span> <span class="pt-time">%s</span></span>',
+            esc_html__( 'Jummah', 'prayer-times' ),
+            esc_html( $s['jumuah_time'] )
         );
     }
 

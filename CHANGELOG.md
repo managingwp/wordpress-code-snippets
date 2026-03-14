@@ -1,4 +1,8 @@
 # Changelog
+## Release 1.4.19
+* (778e9d5) (HEAD -> main) fix(plugin): add inline Jummah and harden LiteSpeed purge call
+
+
 ## Release 1.4.18
 * (5c4c45a) (HEAD -> main, origin/main, origin/HEAD) improvement: Updated wp-redirect-log.php to include trace data
 

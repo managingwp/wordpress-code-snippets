@@ -116,7 +116,7 @@
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
-| [Prayer Times](./shortcodes/prayer-times.php) | 1.0.1 | mu-plugin  | :question: | Displays Islamic prayer times via the AlAdhan API. Use shortcode [prayer_times] anywhere on your site. |
+| [Prayer Times](./shortcodes/prayer-times.php) | 1.0.2 | mu-plugin  | :question: | Displays Islamic prayer times via the AlAdhan API. Use shortcode [prayer_times] anywhere on your site. |
 
 ## [tests](tests)
 

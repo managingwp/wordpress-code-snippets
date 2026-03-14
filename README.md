@@ -130,7 +130,7 @@ The status field is used to indicate the current status of the snippet. This is 
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
-| [Prayer Times](./shortcodes/prayer-times.php) | 1.0.1 | mu-plugin  | :question: | Displays Islamic prayer times via the AlAdhan API. Use shortcode [prayer_times] anywhere on your site. |
+| [Prayer Times](./shortcodes/prayer-times.php) | 1.0.2 | mu-plugin  | :question: | Displays Islamic prayer times via the AlAdhan API. Use shortcode [prayer_times] anywhere on your site. |
 
 ## [tests](tests)
 
@@ -167,6 +167,10 @@ The status field is used to indicate the current status of the snippet. This is 
 | [Failover Status Monitor](./wp-failover/wp-failover.php) | 1.1.0 | mu-plugin | :white_check_mark: | Monitors failover status and provides notifications. |
 
 # Changelog
+## Release 1.4.19
+* (778e9d5) (HEAD -> main) fix(plugin): add inline Jummah and harden LiteSpeed purge call
+
+
 ## Release 1.4.18
 * (5c4c45a) (HEAD -> main, origin/main, origin/HEAD) improvement: Updated wp-redirect-log.php to include trace data
 
