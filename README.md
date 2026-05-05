@@ -100,6 +100,8 @@ The status field is used to indicate the current status of the snippet. This is 
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
+| [wp-maintenance-major.php](./maintenance/wp-maintenance-major.php) | 1.0.0 | mu-plugin | :white_check_mark: | Major maintenance mode that blocks public access and disables key WooCommerce automation plugins. |
+| [wp-maintenance-mode2.php](./maintenance/wp-maintenance-mode2.php) | 1.0.0 | mu-plugin | :white_check_mark: | This plugin displays a maintenance message for non-administrative users. |
 | [wp-maintenance-mode.php](./maintenance/wp-maintenance-mode.php) | 1.0.0 | mu-plugin | :white_check_mark: | Maintenance mode for WordPress - Originally from https://wordpress.stackexchange.com/questions/398037/maintenance-mode-excluding-site-administrators |
 | [wp-maintenance-mode2.php](./maintenance/wp-maintenance-mode2.php) | 1.0.0 | mu-plugin | :white_check_mark: | This plugin displays a maintenance message for non-administrative users. |
 
