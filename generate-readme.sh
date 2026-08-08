@@ -50,7 +50,7 @@ for DIRECTORY in $DIRECTORIES; do
             fi
 
             # -- Type
-            TYPE=$(grep -i "Type:" "$FILE" | tail -n 1 | sed 's/ \* Type: //')
+            TYPE=$(grep -i "^\s*\* Type:" "$FILE" | tail -n 1 | sed 's/^\s*\* Type: //')
             if [[ -z "$TYPE" ]]; then
                 echo "⚠️  Warning: No 'Type:' found in $FILE"
                 MISSING_TYPE=$((MISSING_TYPE + 1))

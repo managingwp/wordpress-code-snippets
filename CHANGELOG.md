@@ -1,4 +1,13 @@
 # Changelog
+## feat: add show server IP in admin snippet
+
+
+## feat: maintenance-major.php
+
+
+## feat: add major maintenance mu-plugin snippet
+
+
 ## Release 1.4.19
 * (778e9d5) (HEAD -> main) fix(plugin): add inline Jummah and harden LiteSpeed purge call
 

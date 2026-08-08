@@ -5,6 +5,7 @@
  * Version: 1.0
  * Author: Managing WP
  * Status: Complete
+ * Type: plugin
  */
 
 // Exit if accessed directly

@@ -25,8 +25,8 @@
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
-| [Email Subscribe Block](./blocks/email-subscribe-redirect-block.php) | 1.0 |                                     type: 'email',  | :white_check_mark: | A simple form that redirects with email query param. |
-| [Footer Navigation Block](./blocks/footer-navigation.php) | 1.0.0 |                         type: 'string', | :white_check_mark: | A block that renders a WordPress menu as an unordered list. |
+| [Email Subscribe Block](./blocks/email-subscribe-redirect-block.php) | 1.0 | plugin | :white_check_mark: | A simple form that redirects with email query param. |
+| [Footer Navigation Block](./blocks/footer-navigation.php) | 1.0.0 | plugin | :white_check_mark: | A block that renders a WordPress menu as an unordered list. |
 
 ## [buddyboss](buddyboss)
 
@@ -49,7 +49,7 @@
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
-| [Block HTTP Requests to a list of URLs](./core/block-http-requests.php) | 0.1.0 | * Type: snippet | :white_check_mark: | This plugin blocks HTTP requests to specific URLs, such as the WP Ultimo update server. |
+| [Block HTTP Requests to a list of URLs](./core/block-http-requests.php) | 0.1.0 | snippet | :white_check_mark: | This plugin blocks HTTP requests to specific URLs, such as the WP Ultimo update server. |
 | [enable-core-updates-version-control.php](./core/enable-core-updates-version-control.php) | 1.0.0 | mu-plugin | :white_check_mark: | Filters whether the automatic updater should consider a filesystem location to be potentially managed by a version control system. |
 
 ## [debug](debug)
@@ -88,7 +88,6 @@
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
 | [wp-maintenance-major.php](./maintenance/wp-maintenance-major.php) | 1.0.0 | mu-plugin | :white_check_mark: | Major maintenance mode that blocks public access and disables key WooCommerce automation plugins. |
-| [wp-maintenance-mode2.php](./maintenance/wp-maintenance-mode2.php) | 1.0.0 | mu-plugin | :white_check_mark: | This plugin displays a maintenance message for non-administrative users. |
 | [wp-maintenance-mode.php](./maintenance/wp-maintenance-mode.php) | 1.0.0 | mu-plugin | :white_check_mark: | Maintenance mode for WordPress - Originally from https://wordpress.stackexchange.com/questions/398037/maintenance-mode-excluding-site-administrators |
 | [wp-maintenance-mode2.php](./maintenance/wp-maintenance-mode2.php) | 1.0.0 | mu-plugin | :white_check_mark: | This plugin displays a maintenance message for non-administrative users. |
 
@@ -109,7 +108,7 @@
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
 | [Gravity Forms Notifications as Text not HTML](./plugins/gravityforms-text-notifications.php) | 0.1.0 | snippet | :white_check_mark: | All notifications will be sent as text versus the default html. |
-| [Podcast Download Canonical Guard](./plugins/podcast.php) | 0.1.0 |             header('Content-Type: text/plain; charset=utf-8'); | :white_check_mark: | Prevents Seriously Simple Podcasting plugin redirect loops on missing podcast download URLs by disabling canonical redirects for 404 responses on /podcast-download/ paths. |
+| [Podcast Download Canonical Guard](./plugins/podcast.php) | 0.1.0 | snippet | :white_check_mark: | Prevents Seriously Simple Podcasting plugin redirect loops on missing podcast download URLs by disabling canonical redirects for 404 responses on /podcast-download/ paths. |
 | [Plugin Name: PowerKit SVG Lazyload Fix](./plugins/powerkit-svg-lazyload-fix.php) | 1.0.0 | mu-plugin | :white_check_mark: | This script has two objectives, replace redirection_items and update |
 | [redirection-search-replace.php](./plugins/redirection-search-replace.php) | 1.0.0 | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
 | [Plugin Name: Simple Membership Members Per Page](./plugins/simple-membership-members-per-page.php) | Version: 1.0 | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
@@ -138,7 +137,7 @@
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
-| [WP Ultimo API Fix](./ultimo/ultimo-api-fix.php) | 0.1.0 | * Type: snippet | :white_check_mark: | Fixes the WP Ultimo API calls that fail and timeout after 10 seconds. |
+| [WP Ultimo API Fix](./ultimo/ultimo-api-fix.php) | 0.1.0 | snippet | :white_check_mark: | Fixes the WP Ultimo API calls that fail and timeout after 10 seconds. |
 
 ## [woocommerce](woocommerce)
 
