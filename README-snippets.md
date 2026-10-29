@@ -40,7 +40,7 @@
 | ----- | ------- | ---- | ------ | ----------- |
 | [disable-lscache-notice.php](./caching/disable-lscache-notice.php) | 1.0.0 | snippet | :construction: | Disables the admin notice Litespeeds LSCache generates about conflicting plugins installed |
 | [disable-plugin-updates.php](./caching/disable-plugin-updates.php) | 1.0.0 | snippet | :white_check_mark: | Remove plugin update notices |
-| [Disable WP Rocket Cache when Litespeed Cache is enabled.](./caching/disable-wp-rocket-lscache.php) |                 echo 'LiteSpeed Cache is active, version: ' . LSCWP_V; | mu-plugin | :white_check_mark: | This plugin disables WP Rocket cache when Litespeed Cache is enabled. It checks if Litespeed Cache is active and if so, it disables WP Rocket cache. |
+| [Disable WP Rocket Cache when Litespeed Cache is enabled.](./caching/disable-wp-rocket-lscache.php) | 0.2.0 | mu-plugin | :white_check_mark: | This plugin disables WP Rocket cache when Litespeed Cache is enabled. It checks if Litespeed Cache is active and if so, it disables WP Rocket cache. |
 | [Disable WP Rocket Cache Preload](./caching/disable-wp-rocket-preload.php) | 0.1.0 | mu-plugin | :white_check_mark: | This plugin disables WP Rocket cache preload functionality on a WordPress site. |
 | [nginx-gravity-forms-stripe-cache-exclude.php](./caching/nginx-gravity-forms-stripe-cache-exclude.php) | 1.0.0 | snippet | :white_check_mark: | Exclude Gravity Forms or Stripe from caching |
 | [nginx-helper-purge-schedule.php](./caching/nginx-helper-purge-schedule.php) | 1.0.0 | snippet | :white_check_mark: | Purge NGINX cache when a scheduled post is published |
@@ -58,16 +58,16 @@
 | ----- | ------- | ---- | ------ | ----------- |
 | [log-hook-calls.php](./debug/log-hook-calls.php) | 1.0.0 | mu-plugin | :white_check_mark: | Log all hook calls to a file |
 | [PHP Memory Info](./debug/php-memory.php) | 1.0 | mu-plugin | :white_check_mark: | Adds a Tools -> PHP Memory page to display PHP ini and WordPress memory settings and current usage. |
-| [show-browser-cookies.php](./debug/show-browser-cookies.php) | 1.0.0 | snippet | :question: |  * Description Shows your browsers cookies |
+| [show-browser-cookies.php](./debug/show-browser-cookies.php) | 1.0.0 | snippet | :white_check_mark: | Shows your browsers cookies |
 | [Application Logs](./debug/show-logs-admin.php) | 1.0 | snippet | :white_check_mark: | Displays top 10 lines from a log file in the WordPress admin section. |
 | [Show Server IP in Admin](./debug/show-server-ip-admin.php) | 1.0.0 | snippet | :white_check_mark: | Shows the server IP address as a notice in the WordPress admin. |
-| [WP Redirect Log](./debug/wp-redirect-log.php) | 1.0.1 | mu-plugin | :question: | Logs all wp_redirect and wp_safe_redirect calls to a log file in the uploads directory. |
+| [WP Redirect Log](./debug/wp-redirect-log.php) | 1.0.1 | mu-plugin | :white_check_mark: | Logs all wp_redirect and wp_safe_redirect calls to a log file in the uploads directory. |
 
 ## [development](development)
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
-| [staging-environment.php](./development/staging-environment.php) | 1.0.0 | Snippet | :white_check_mark: | This snippet will enable and disable plugins based on the WP_ENVIRONMENT_TYPE  |
+| [staging-environment.php](./development/staging-environment.php) | 1.0.0 | Snippet | :white_check_mark: | This snippet will enable and disable plugins based on the WP_ENVIRONMENT_TYPE |
 
 ## [general](general)
 
@@ -88,8 +88,8 @@
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
 | [wp-maintenance-major.php](./maintenance/wp-maintenance-major.php) | 1.0.0 | mu-plugin | :white_check_mark: | Major maintenance mode that blocks public access and disables key WooCommerce automation plugins. |
-| [wp-maintenance-mode.php](./maintenance/wp-maintenance-mode.php) | 1.0.0 | mu-plugin | :white_check_mark: | Maintenance mode for WordPress - Originally from https://wordpress.stackexchange.com/questions/398037/maintenance-mode-excluding-site-administrators |
 | [wp-maintenance-mode2.php](./maintenance/wp-maintenance-mode2.php) | 1.0.0 | mu-plugin | :white_check_mark: | This plugin displays a maintenance message for non-administrative users. |
+| [wp-maintenance-mode.php](./maintenance/wp-maintenance-mode.php) | 1.0.0 | mu-plugin | :white_check_mark: | Maintenance mode for WordPress - Originally from https://wordpress.stackexchange.com/questions/398037/maintenance-mode-excluding-site-administrators |
 
 ## [monitoring](monitoring)
 
@@ -109,16 +109,16 @@
 | ----- | ------- | ---- | ------ | ----------- |
 | [Gravity Forms Notifications as Text not HTML](./plugins/gravityforms-text-notifications.php) | 0.1.0 | snippet | :white_check_mark: | All notifications will be sent as text versus the default html. |
 | [Podcast Download Canonical Guard](./plugins/podcast.php) | 0.1.0 | snippet | :white_check_mark: | Prevents Seriously Simple Podcasting plugin redirect loops on missing podcast download URLs by disabling canonical redirects for 404 responses on /podcast-download/ paths. |
-| [Plugin Name: PowerKit SVG Lazyload Fix](./plugins/powerkit-svg-lazyload-fix.php) | 1.0.0 | mu-plugin | :white_check_mark: | This script has two objectives, replace redirection_items and update |
+| [PowerKit SVG Lazyload Fix](./plugins/powerkit-svg-lazyload-fix.php) | 1.0.0 | mu-plugin | :white_check_mark: | Must-use plugin to prevent PowerKit lazyload errors with SVG images |
 | [redirection-search-replace.php](./plugins/redirection-search-replace.php) | 1.0.0 | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
-| [Plugin Name: Simple Membership Members Per Page](./plugins/simple-membership-members-per-page.php) | Version: 1.0 | script | :white_check_mark: | This script has two objectives, replace redirection_items and update |
+| [Simple Membership Members Per Page](./plugins/simple-membership-members-per-page.php) | 1.0 | script | :white_check_mark: | Change the number of members displayed per page in the Simple Membership plugin. |
 | [Ultimo Custom Domain Edits](./plugins/ultimo-custom-domain-edits.php) | 1.0 | snippet | :white_check_mark: | Custom Domain Edits for Ultimo |
 
 ## [shortcodes](shortcodes)
 
 | Title | Version | Type | Status | Description |
 | ----- | ------- | ---- | ------ | ----------- |
-| [Prayer Times](./shortcodes/prayer-times.php) | 1.0.2 | mu-plugin  | :question: | Displays Islamic prayer times via the AlAdhan API. Use shortcode [prayer_times] anywhere on your site. |
+| [Prayer Times](./shortcodes/prayer-times.php) | 1.0.2 | mu-plugin | :white_check_mark: | Displays Islamic prayer times via the AlAdhan API. Use shortcode [prayer_times] anywhere on your site. |
 
 ## [tests](tests)
 

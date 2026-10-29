@@ -2,6 +2,46 @@
 # Generate README.md
 # Usage: ./generate-readme.sh
 
+# Read a header field from the leading docblock of a PHP file.
+# Only the first match inside the docblock is used, so code further down the file
+# (for example an echo containing "version:") can never be picked up.
+# Falls back to the first match anywhere in the file when the docblock is missing.
+header_value() { # <file> <key>
+    local file=$1 key=$2 value
+    value=$(awk -v key="$key" '
+        NR == 1 { next }
+        /\*\// { exit }
+        {
+            line = $0
+            sub(/^[[:space:]]*\/?\*+[[:space:]]*/, "", line)
+            if (index(line, key ":") == 1) {
+                value = substr(line, length(key) + 2)
+                sub(/^[[:space:]]+/, "", value)
+                sub(/[[:space:]]+$/, "", value)
+                print value
+                exit
+            }
+        }' "$file")
+    if [[ -z $value ]]; then
+        value=$(grep -i -m 1 -E "^[[:space:]]*(/?\*+[[:space:]]*)?${key}:" "$file" \
+            | sed -E "s/^[[:space:]]*(\/?\*+[[:space:]]*)?${key}:[[:space:]]*//")
+    fi
+    printf '%s' "$value"
+}
+
+# Escape a value so it cannot break a markdown table row.
+table_cell() { printf '%s' "$1" | sed 's/|/\\|/g'; }
+
+# Map a raw Status value to the emoji used in the tables.
+status_emoji() { # <status>
+    case "${1,,}" in
+        complete) printf ':white_check_mark:' ;;
+        broken)   printf ':x:' ;;
+        wip)      printf ':construction:' ;;
+        *)        printf ':question:' ;;
+    esac
+}
+
 # Initialize warning counters
 MISSING_PLUGIN_NAME=0
 MISSING_TYPE=0
@@ -34,7 +74,7 @@ for DIRECTORY in $DIRECTORIES; do
             TOTAL_FILES=$((TOTAL_FILES + 1))
             
             # -- Title
-            TITLE=$(grep -i "Plugin Name:" "$FILE" | tail -n 1 | sed 's/ \* Plugin Name: //')
+            TITLE=$(header_value "$FILE" "Plugin Name")
             if [[ -z "$TITLE" ]]; then
                 TITLE="$FILE_NAME"
                 echo "⚠️  Warning: No 'Plugin Name:' found in $FILE - using filename as title"
@@ -42,40 +82,35 @@ for DIRECTORY in $DIRECTORIES; do
             fi
 
             # -- Version
-            VERSION=$(grep -i "Version:" "$FILE" | tail -n 1 | sed 's/ \* Version: //')
-            if [[ -z "$VERSION" ]]; then
+            VERSION=$(header_value "$FILE" "Version")
+            if [[ ! $VERSION =~ ^[0-9][0-9A-Za-z.+_-]*$ ]]; then
+                if [[ -n $VERSION ]]; then
+                    echo "⚠️  Warning: Unusable 'Version:' value '$VERSION' in $FILE"
+                fi
                 VERSION="Unknown"
                 echo "⚠️  Warning: No 'Version:' found in $FILE"
                 MISSING_VERSION=$((MISSING_VERSION + 1))
             fi
 
             # -- Type
-            TYPE=$(grep -i "^\s*\* Type:" "$FILE" | tail -n 1 | sed 's/^\s*\* Type: //')
+            TYPE=$(header_value "$FILE" "Type")
             if [[ -z "$TYPE" ]]; then
                 echo "⚠️  Warning: No 'Type:' found in $FILE"
                 MISSING_TYPE=$((MISSING_TYPE + 1))
             fi
 
             # -- Status
-            STATUS=$(grep -i "Status:" "$FILE" | tail -n 1 | sed 's/ \* Status: //')
+            STATUS=$(header_value "$FILE" "Status")
             if [[ -z $STATUS ]]; then
                 STATUS="Unknown"
                 echo "⚠️  Warning: No 'Status:' found in $FILE"
                 MISSING_STATUS=$((MISSING_STATUS + 1))
             fi
             # -- Set Status emoji
-            if [[ $STATUS == "Complete" ]]; then
-                STATUS=":white_check_mark:"
-            elif [[ $STATUS == "Broken" ]]; then
-                STATUS=":x:"
-            elif [[ $STATUS == "WIP" ]]; then
-                STATUS=":construction:"
-            else
-                STATUS=":question:"
-            fi
+            STATUS=$(status_emoji "$STATUS")
             
             # -- Description
-            DESCRIPTION=$(grep " * Description" "$FILE" | tail -n 1 | sed 's/ \* Description: //')
+            DESCRIPTION=$(header_value "$FILE" "Description")
             if [[ -z "$DESCRIPTION" ]]; then
                 DESCRIPTION="No description"
                 echo "⚠️  Warning: No 'Description:' found in $FILE"
@@ -92,7 +127,7 @@ for DIRECTORY in $DIRECTORIES; do
                 echo "⚠️  Warning: No type or title found for $FILE - setting both to 'Unknown'"
             fi
             
-            echo "| [$TITLE]($FILE) | $VERSION | $TYPE | $STATUS | $DESCRIPTION |" >> $README_SNIPPETS_FILE
+            echo "| [$TITLE]($FILE) | $VERSION | $TYPE | $STATUS | $(table_cell "$DESCRIPTION") |" >> $README_SNIPPETS_FILE
         fi
     done
     echo "" >> $README_SNIPPETS_FILE

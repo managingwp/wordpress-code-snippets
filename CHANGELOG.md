@@ -1,4 +1,16 @@
 # Changelog
+## Merge pull request #4 from managingwp/copilot/fix-code-for-review-comments
+* [WIP] Fix code based on review comments
+
+## Initial plan
+
+
+## chore: add /plans to .gitignore for external plans
+
+
+## fix: anchor Type header extraction in generate-readme.sh
+
+
 ## feat: add show server IP in admin snippet
 
 
