@@ -1,4 +1,32 @@
 # Changelog
+## chore: drop unused docusaurus template assets
+* Removes .nojekyll (the Pages artifact upload never runs Jekyll, so it only
+* misleads), the unused HomepageFeatures component and the template screenshots and
+* logo that no page references.
+
+
+## feat: scaffold docusaurus docs site
+* Adds website/ with a pinned Docusaurus 3.10.2 classic TypeScript config and the
+* local search theme. Docs-only: routeBasePath '/', baseUrl
+* /wordpress-code-snippets/, trailingSlash false, and all three broken-link guards
+* set to throw.
+
+* Seeds the hand-written pages the generator will not own: the landing page, the
+* install guide, the snippet header reference, the add-a-snippet guide and an empty
+* changelog page with its generated markers.
+
+
+## fix: read snippet metadata from the leading docblock only
+* Version, Type, Status and Description were taken from the last match anywhere in
+* the file, so a lower-case 'version:' inside code overwrote the header (the
+* WP Rocket snippet shipped an echo statement as its version). Values now come from
+* the docblock, Status is matched case-insensitively and trimmed, and table cells
+* escape pipes.
+
+* Also adds the missing colon to the show-browser-cookies description so all 50
+* snippets report complete metadata.
+
+
 ## Merge pull request #4 from managingwp/copilot/fix-code-for-review-comments
 * [WIP] Fix code based on review comments
 
