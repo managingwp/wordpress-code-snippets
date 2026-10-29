@@ -12,7 +12,10 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "gen:docs": "cd .. && ./generate-readme.sh",
+    "check:docs:generated": "cd .. && ./generate-readme.sh --check",
+    "check:docs": "bash ../scripts/check-docs-site.sh --site . --repo-root .."
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",
