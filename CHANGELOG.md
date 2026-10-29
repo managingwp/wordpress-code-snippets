@@ -1,4 +1,34 @@
 # Changelog
+## ci: publish the docs site to github pages
+* Adds the Docs workflow: it fails when generated docs are stale, then builds
+* website/ with npm ci and deploys the artifact to Pages. The checkout uses
+* fetch-depth 0 because the changelog page is generated from release tags.
+
+* scripts/check-docs-site.sh is the publishable-or-not gate (399 checks: config
+* guards, pinned dependencies, front matter, sidebar both ways, links, markers,
+* README budget, search wiring, workflow permissions). One assertion is widened:
+* the search plugin writes its index to the docs version outDir, which is the build
+* root on a docs-only site, not build/assets/js.
+
+* AGENTS.md and the website scripts document the generated-file contract and the
+* three checks to run before pushing.
+
+
+## feat: generate snippet docs from the snippet headers
+* The generator now owns the whole published surface: one page per snippet under
+* website/docs/snippets, the landing catalogue, the snippet categories in the
+* sidebar, the release changelog page, the README docs index and CHANGELOG.md.
+
+* README.md is now a doorway (47 lines) instead of the 412-line manual, and
+* README-snippets.md is retired because the site owns the catalogue. CHANGELOG.md
+* keeps the full commit log; the site changelog groups by release tag instead, so it
+* stays stable between releases.
+
+* --check regenerates into a temp directory and diffs, so a new snippet without its
+* docs fails the gate. Root folders that are not snippet categories (website,
+* .github, scripts, docs) are no longer scanned.
+
+
 ## chore: drop unused docusaurus template assets
 * Removes .nojekyll (the Pages artifact upload never runs Jekyll, so it only
 * misleads), the unused HomepageFeatures component and the template screenshots and
